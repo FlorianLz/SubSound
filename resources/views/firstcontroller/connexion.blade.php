@@ -10,5 +10,28 @@
             @include('auth.register')
         </div>
     </div>
+    <script>
+        $(document).ready(function () {
+
+            /* Page connexion */
+            $('#choixinscription').click(function (e) {
+                $('#choixinscription').addClass('choixactif');
+                $('#choixconnexion').removeClass('choixactif');
+                $('#forminscription').show();
+                $('#formconnexion').hide();
+
+            });
+            $('#choixconnexion').click(function (e) {
+                $('#choixconnexion').addClass('choixactif');
+                $('#choixinscription').removeClass('choixactif');
+                $('#forminscription').hide();
+                $('#formconnexion').show();
+
+            });
+
+        });
+
+
+    </script>
 
 @endsection

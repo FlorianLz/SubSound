@@ -1,42 +1,8 @@
-$(document).ready(function () {
-    $("a.chanson").click(function (e) {
-        e.preventDefault();
-        let url = $(this).attr('data-file');
-        let titre = $(this).attr('data-titre');
-        let audio = $('#player');
-        audio[0].src = url;
-        audio[0].play();
-        document.getElementById('audio-player').style.display="flex";
-        document.getElementById('play-btn').className = "pause";
-        document.getElementById("titremusique").innerHTML = titre;
-    })
-
-    /* Page connexion */
-    $('#choixinscription').click(function (e) {
-        $('#choixinscription').addClass('choixactif');
-        $('#choixconnexion').removeClass('choixactif');
-        $('#forminscription').show();
-        $('#formconnexion').hide();
-
-    })
-    $('#choixconnexion').click(function (e) {
-        $('#choixconnexion').addClass('choixactif');
-        $('#choixinscription').removeClass('choixactif');
-        $('#forminscription').hide();
-        $('#formconnexion').show();
-
-    })
-
-    /* Hover logo */
-    $('#logo')
-        .mouseover(function () {
-            $(this).attr("src", "/img/logo.gif");
-        })
-        .mouseout(function () {
-            $(this).attr("src", "/img/logo.png");
-        });
-
+$(document).pjax('[data-pjax] a, a[data-pjax]', '#pjax-container');
+$(document).on('submit', 'form[data-pjax]', function(event) {
+    $.pjax.submit(event, '#pjax-container')
 });
+
 
 function initProgressBar() {
     let player = document.getElementById('player');
@@ -57,6 +23,8 @@ function initProgressBar() {
 
     if (player.currentTime == player.duration) {
         document.getElementById('play-btn').className = "";
+        let idmusique=document.getElementById('idmusique').innerText;
+        document.getElementById('imgchanson'+idmusique).className = "imgchanson";
     }
 
     function seek(event) {
@@ -64,7 +32,7 @@ function initProgressBar() {
         player.currentTime = percent * player.duration;
         progressbar.value = percent / 100;
     }
-};
+}
 
 function initPlayers(num) {
     // pass num in if there are multiple audio players e.g 'player' + i
@@ -95,11 +63,15 @@ function initPlayers(num) {
                     player.pause();
                     isPlaying = false;
                     document.getElementById('play-btn').className = "";
+                    let idmusique=document.getElementById('idmusique').innerText;
+                    document.getElementById('imgchanson'+idmusique).className = "imgchanson";
 
                 } else {
                     player.play();
                     document.getElementById('play-btn').className = "pause";
                     isPlaying = true;
+                    let idmusique=document.getElementById('idmusique').innerText;
+                    document.getElementById('imgchanson'+idmusique).className = "imgchanson rotate";
                 }
             }
         }());
@@ -127,3 +99,53 @@ function calculateCurrentValue(currentTime) {
 }
 
 initPlayers(jQuery('#player-container').length);
+
+$(document).ready(function () {
+    $("a.chanson").click(function (e) {
+        e.preventDefault();
+        let url = $(this).attr('data-file');
+        let titre = $(this).attr('data-titre');
+        let id = $(this).attr('data-id');
+        let audio = $('#player');
+        audio[0].src = url;
+        audio[0].play();
+        document.getElementById('audio-player').style.display="flex";
+        document.getElementById('play-btn').className = "pause";
+        document.getElementById("titremusique").innerHTML = titre;
+        document.getElementById("idmusique").innerHTML = id;
+        for (let element of document.getElementsByClassName("rotate")){
+            element.className="imgchanson";
+        }
+        document.getElementById('imgchanson'+id).classList.add("rotate");
+
+
+
+    });
+
+    /* Page connexion */
+    $('#choixinscription').click(function (e) {
+        $('#choixinscription').addClass('choixactif');
+        $('#choixconnexion').removeClass('choixactif');
+        $('#forminscription').show();
+        $('#formconnexion').hide();
+
+    });
+    $('#choixconnexion').click(function (e) {
+        $('#choixconnexion').addClass('choixactif');
+        $('#choixinscription').removeClass('choixactif');
+        $('#forminscription').hide();
+        $('#formconnexion').show();
+
+    });
+
+    /* Hover logo */
+    $('#logo')
+        .mouseover(function () {
+            $(this).attr("src", "/img/logo.gif");
+        })
+        .mouseout(function () {
+            $(this).attr("src", "/img/logo.png");
+        });
+
+});
+

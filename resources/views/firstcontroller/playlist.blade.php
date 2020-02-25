@@ -1,1 +1,4 @@
-@extends('layouts.general')
+@extends("layouts.general")
+@section("contenu")
+    playlist
+@endsection

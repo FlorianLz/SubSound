@@ -3,7 +3,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
+                    <form method="POST" action="{{ route('login') }}" data-pjax>
                         @csrf
 
                         <div class="form-group row">

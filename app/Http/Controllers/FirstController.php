@@ -75,7 +75,8 @@ class FirstController extends Controller
         $c-> style = $request->input('style');
         $c-> user_id = Auth::id();
         $c->save(); //INSERT INTO chansons VALUES (NULL,...)
-        return redirect("/utilisateur/".Auth::id());
+        //return redirect("/utilisateur/".Auth::id());
+        return redirect("/");
     }
 
     public function suivre($id){

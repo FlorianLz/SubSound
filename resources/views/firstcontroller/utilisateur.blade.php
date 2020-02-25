@@ -20,5 +20,5 @@
         <li>Il est suivi par {{$utilisateur->ilsMeSuivent()->count()}} personnes</li>
     </ul>
 
-    @include("firstcontroller._chansons", ["chansons" => $utilisateur->chansons])
+    <!-- @include("firstcontroller._chansons", ["chansons" => $utilisateur->chansons])-->
 @endsection

@@ -31,6 +31,8 @@ Route::get('/suivre/{id}', 'FirstController@suivre')->where ('id', '[0-9]+')->mi
 
 Route::post('/chanson/create', 'FirstController@creerchanson');
 
+Route::post('/', 'FirstController@index');
+
 Auth::routes();
 
 

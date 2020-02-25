@@ -11,7 +11,7 @@
             </ul>
         </div>
     @endif
-    <form action="/chanson/create" method="POST" enctype="multipart/form-data">
+    <form action="/chanson/create" method="POST" enctype="multipart/form-data" data-pjax>
         @csrf
         <input type="text" name="nom" placeholder="Le nom..." value="{{old('nom')}}" required>
         <input type="file" name="chanson" value="{{old('url')}}" required>
