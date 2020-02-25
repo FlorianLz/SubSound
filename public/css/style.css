@@ -1,0 +1,307 @@
+:root{
+    --principale:#0b135a;
+    --secondaire:#f5cb5c;
+}
+html {
+    overflow: scroll;
+    overflow-x: hidden;
+}
+::-webkit-scrollbar {
+    width: 0px;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+}
+/* Optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+    background: #FF0000;
+}
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: 'Mukta', sans-serif;
+}
+
+body{
+    background: var(--principale);  /* fallback for old browsers */
+    height:100vh;
+}
+nav{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--principale);  /* fallback for old browsers */
+    color: white;
+    padding-left:25px;
+    padding-right:25px;
+    height:100%;
+    font-size:1.7rem;
+}
+nav > ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: flex-end;
+}
+
+nav > ul > li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    height:100%;
+}
+
+nav > ul > li a:hover:not(.active) {
+    background-color: #778ca3;
+}
+
+header{
+    grid-area:h;
+}
+#main{
+    grid-area: c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: auto;
+}
+.contenumain{
+    width:90%;
+    background-color:white;
+    border-radius:50px;
+    height:95%;
+}
+.menucote{
+    grid-area: m;
+}
+.menucote > div:nth-child(1) > a:nth-child(1){
+    width:min-content;
+}
+#grid{
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: 0.5fr 6fr 0.5fr;
+    grid-template-areas:
+        "m h"
+        "m c"
+        "a a";
+    height:100%;
+}
+
+
+.audio-player {
+    background: white;
+    border: 1px solid #dfdfdf;
+    width: 100%;
+    text-align: center;
+    flex-flow: row;
+    display:none;
+    grid-area:a;
+}
+.audio-player .album-image {
+    min-height: 100px;
+    width: 10%;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.audio-player .player-controls {
+    align-items: center;
+    justify-content: center;
+    margin-top: 2.5rem;
+    flex: 3;
+    width:90%;
+}
+.audio-player .player-controls progress {
+    width: 90%;
+}
+.audio-player .player-controls progress[value] {
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: white;
+    color: blue;
+    height: 5px;
+}
+.audio-player .player-controls progress[value]::-webkit-progress-bar {
+    background-color: white;
+    border-radius: 2px;
+    border: 1px solid #dfdfdf;
+    color: blue;
+}
+.audio-player .player-controls progress::-webkit-progress-value {
+    background-color: blue;
+}
+.audio-player .player-controls p {
+    font-size: 1.6rem;
+}
+.audio-player #play-btn {
+    background-image: url('http://www.lukeduncan.me/images/play-button.png');
+    background-size: cover;
+    width: 75px;
+    height: 75px;
+    margin: 2rem 0 2rem 2rem;
+}
+.audio-player #play-btn.pause {
+    background-image: url('http://www.lukeduncan.me/images/pause-button.png');
+}
+
+
+/* Barre de recherche */
+
+.formrecherche{
+    position: relative;
+    transition: all 0.3s;
+    width: 30px;
+    height: 30px;
+    background: white;
+    box-sizing: border-box;
+    border-radius: 25px;
+    border: 4px solid white;
+}
+
+.formrecherche > input{
+    width: 100%;;
+    height: 21px;
+    line-height: 20px;
+    outline: 0;
+    border: 0;
+    display: none;
+    font-size: 0.5em;
+    border-radius: 20px;
+    padding: 0 35px;
+}
+
+.formrecherche > .fa{
+    box-sizing: border-box;
+    padding: 7px;
+    width: 21px;
+    height: 21px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    color: #4b6584;
+    text-align: center;
+    font-size: 0.6em;
+    transition: all 1s;
+}
+
+.formrecherche:hover{
+    width: 250px;
+    cursor: pointer;
+}
+
+.formrecherche:hover > input{
+    display: block;
+}
+
+.formrecherche:hover .fa{
+    background: white;
+    color: #4b6584;
+}
+
+.formulaires{
+    background-color: var(--secondaire);
+    border-radius: 10px;
+    padding:50px;
+}
+
+ input[type=text], input[type=email], input[type=password]{
+     background-color: transparent;
+     border: navajowhite;
+     border-bottom: 2px solid;
+     font-size: 1rem;
+}
+button[type=submit]{
+     margin-top:1rem;
+     text-align:center;
+     background-color: var(--principale);
+     color: white;
+     border: none;
+     padding:0.6rem;
+ }
+ .textlabel{
+     font-size:2rem;
+ }
+.chansons{
+    display:flex;
+    flex-wrap: wrap;
+    height: 100%;
+    overflow: auto;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 20px;
+}
+.chanson{
+    background-color:red;
+    width:17vw;
+    height:17vw;
+    border-radius: 200px;
+    margin-bottom:20px;
+    overflow: hidden;
+    position: relative;
+}
+.imgchanson{
+    position:absolute;
+    width:100%;
+    background-image: url("/img/disquedefaut.jpg");
+    height:50%;
+    background-size:cover;
+}
+
+/* Menu côté */
+.menucote > div:nth-child(1){
+    display:flex;
+    height:25%;
+    justify-content: center;
+}
+.menucote > div:nth-child(2){
+    display:flex;
+    height:65%;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+}
+.logo {
+    height: 100%;
+}
+.categories > a {
+    text-decoration: none;
+    color:white;
+    font-size:2rem;
+}
+.categories > a:hover {
+    color:var(--secondaire);
+}
+
+/* Page connexion */
+.fondbleu{
+    background-color: var(--principale);
+    width:100%;
+    height:100%;
+}
+.pageconnexion{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    color:white;
+    flex-direction: column;
+}
+.choix{
+    display:flex;
+    font-size:2.5rem;
+}
+.choix > div{
+    padding:20px;
+}
+.forminscription{
+    display:none;
+}
+.connexion, .inscription{
+    cursor:pointer;
+}
+.choixactif{
+    color:var(--secondaire);
+}
