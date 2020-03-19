@@ -1,19 +1,30 @@
-<div class="chansons" onload="initPlayers()">
-    @foreach($chansons as $c)
-        <a class="chanson" data-file="{{$c->url}}" data-titre="{{$c->nom}}" data-id="{{$c->id}}" data-pjax>
+<div class="div_chansons">
+    <div class="titre"><h2>Les derniers ajouts</h2></div>
+    <div class="chansons" onload="initPlayers()">
+        @foreach($chansons as $c)
             <div class="chanson">
-                <div id ="imgchanson{{$c->id}}" class="imgchanson"></div>
-                <div class="infoschanson">
-                    <h4>{{$c->nom}}</h4>
+                <div class="chanson">
+                    <div id ="imgchanson{{$c->id}}" class="imgchanson"></div>
+                    <div class="infoschanson"></div>
+                    <h4 class="titrechanson">{{$c->nom}}</h4>
+                    <div class="boutonplay" data-file="{{$c->url}}" data-titre="{{$c->nom}}" data-id="{{$c->id}}" data-pjax></div>
+                    @guest
+                    @else
+                        @if(Auth::user()->jeLike->contains($c->id))
+                            <a class="a_like" href="/like/{{$c->id}}"><i class="fas fa-heart jelike"></i></a>
+                        @else
+                            <a class="a_like" href="/like/{{$c->id}}"><i class="far fa-heart jelikepas"></i></a>
+                        @endif
+                    @endguest
                 </div>
-
             </div>
-        </a>
-    @endforeach
+        @endforeach
+    </div>
 </div>
+<script src="/js/jquery.js"></script>
 <script>
-    $("a.chanson").click(function (e) {
-        e.preventDefault();
+    $(".boutonplay").click(function () {
+        console.log("clic");
         let url = $(this).attr('data-file');
         let titre = $(this).attr('data-titre');
         let audio = $('#player');

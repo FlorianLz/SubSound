@@ -13,9 +13,11 @@
 
 Route::get('/', 'FirstController@index');
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'FirstController@index')->name('home');
 
 Route::get('/connexion', 'FirstController@connexion');
+
+Route::get('/inscription', 'FirstController@inscription');
 
 Route::get('/favoris', 'FirstController@favoris');
 
@@ -28,6 +30,8 @@ Route::get('/utilisateur/{id}','FirstController@utilisateur')->where ('id', '[0-
 Route::get('/chanson/nouvelle', 'FirstController@nouvellechanson')->middleware('auth');
 
 Route::get('/suivre/{id}', 'FirstController@suivre')->where ('id', '[0-9]+')->middleware('auth');
+
+Route::get('/like/{id}', 'FirstController@like')->where ('id', '[0-9]+')->middleware('auth');
 
 Route::post('/chanson/create', 'FirstController@creerchanson');
 

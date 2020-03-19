@@ -1,3 +1,5 @@
+@extends('layouts.general')
+@section('contenu')
 <div id="forminscription" class="container forminscription">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -5,7 +7,7 @@
 
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}" data-pjax>
+                    <form method="POST" action="{{ route('register') }}">
                         @csrf
 
                         <div class="form-group row">
@@ -71,3 +73,4 @@
         </div>
     </div>
 </div>
+@endsection

@@ -34,7 +34,11 @@ class FirstController extends Controller
     }
 
     public function connexion(){
-        return view("firstcontroller.connexion");
+        return view("auth.login");
+    }
+
+    public function inscription(){
+        return view("auth.register");
     }
 
     public function favoris(){
@@ -82,5 +86,10 @@ class FirstController extends Controller
     public function suivre($id){
         Auth::user()->jeLesSuit()->toggle($id);
         return back();
+    }
+
+    public function like($id){
+        Auth::user()->jeLike()->toggle($id);
+        return redirect("/");
     }
 }

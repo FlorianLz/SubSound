@@ -50,4 +50,8 @@ class User extends Authenticatable
     public function ilsMeSuivent(){
         return $this->belongsToMany("App\User", "connexion", "suivi_id", "suiveur_id");
     }
+
+    public function jeLike(){
+        return $this->belongsToMany("App\User", "like", "user_id", "chanson_id");
+    }
 }

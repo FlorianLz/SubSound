@@ -1,6 +1,7 @@
 :root{
-    --principale:#0b135a;
-    --secondaire:#f5cb5c;
+    --principale:#1dc6f2;
+    --secondaire:#676767;
+    --grisclair:#acacac;
 }
 html {
     overflow: scroll;
@@ -22,14 +23,434 @@ html {
 }
 
 body{
-    background: var(--principale);  /* fallback for old browsers */
+    background: white;
     height:100vh;
+    width:100vw;
+    display:flex;
 }
-nav{
+#main{
+    width:80%;
+}
+#pjax-container{
+    height:100%;
+    overflow: auto;
+    padding-top:30px;
+    padding-left:50px;
+    padding-right:50px;
+    padding-bottom:100px;
+}
+/* Menu côté connecté */
+.menucote{
+    height:100%;
+    width:20%;
+    background-image: url("../img/fond_menu.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+}
+.menucote a{
+    text-decoration: none;
+    color:var(--secondaire);
+}
+.logo_a{
+    display: flex;
+    justify-content: center;
+}
+.logomenu{
+    width:55%;
+}
+
+.infos_user{
+    display:flex;
+    padding-left:30px;
+}
+.photo_user{
+    width:60px;
+    height:60px;
+    background-color:var(--principale);
+    border-radius:60px;
+}
+.infos{
+    padding-left: 30px;
+}
+.infos > p{
+    font-size:1.2rem;
+    font-weight: bold;
+    width:min-content;
+}
+.infos > a > p{
+    font-size:0.8rem;
+    border:1px solid grey;
+    border-radius:5px;
+    text-align: center;
+}
+
+.menu, .vosplaylists{
+    padding-top:40px;
+    padding-left:30px;
+    line-height: 2.6;
+}
+.menu > h3, .vosplaylists > div > h3{
+    font-size:1.3rem;
+    color:var(--grisclair);
+}
+.menu > a > p, .menu > div > a > p,.vosplaylists > a > p{
+    font-size:1.3rem;
+}
+.menu > a >p.actif, .menu > div > a >p.actif{
+    color:var(--principale);
+    font-weight: bold;
+}
+.menu > a > p > span, .menu > div > a > p > span, .vosplaylists > a > p > span{
+    padding-left:10px;
+}
+.menu > a > p > i, .menu > div > a > p > i, .vosplaylists > a > p > i{
+    width:30px;
+    text-align: center;
+}
+.lienmusique{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.lienmusique > a:nth-child(2), .vosplaylists > div > a{
+    padding-right:50px;
+}
+.vosplaylists > div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Menu côté déconnecté */
+h3.msg_auth{
+    color:var(--principale);
+    text-align: center;
+    padding-top:30px;
+}
+.boutons_auth{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+a.bouton_auth{
+    width:70%;
+    border:5px solid var(--principale);
+    border-radius:20px;
+    color:var(--principale);
+    text-align: center;
+}
+a.bouton_auth:hover{
+    color:white;
+    background-color: var(--principale);
+}
+.bouton_auth:nth-child(1){
+    margin-bottom:50px;
+    margin-top:20px;
+}
+
+/* Page d'accueil */
+.titre{
+    color:var(--secondaire);
+    padding-bottom:15px;
+    text-align: left;
+}
+.chansons{
+    display:flex;
+    flex-wrap: wrap;
+    height: 100%;
+    overflow: auto;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.chanson{
+    width:17vw;
+    height:17vw;
+    border-radius: 200px;
+    margin-bottom:20px;
+    overflow: hidden;
+    position: relative;
+}
+.infoschanson{
+    width:100%;
+    height:100%;
+    background-image:url("https://media.discopiu.com/img/2013/7/24/192072-large-avicii-wake-me-up.jpg");
+    background-size: cover;
+    z-index:5;
+    position:absolute;
+    top:0;
+    opacity: 0.3;
+}
+h4.titrechanson{
+    bottom: 10%;
+    position: absolute;
+    color: white;
+    width:100%;
+    text-align: center;
+    z-index:20;
+    opacity: 1;
+}
+.imgchanson{
+    position:absolute;
+    width:100%;
+    background-image: url("/img/disque.png");
+    height:100%;
+    background-size: 105%;
+    background-position: center;
+}
+.boutonplay{
+    width:40%;
+    height:40%;
+    background-image: url("../img/icone_play.png");
+    background-size: cover;
+    position:absolute;
+    z-index:20;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+}
+
+a.a_like > i.jelike{
+    color:red;
+}
+a.a_like > i.jelikepas{
+    color:grey;
+}
+a.a_like{
+    position: absolute;
+    left:75%;
+    top:50%;
+    z-index:20;
+    transform: translateY(-50%);
+}
+a.a_like > i{
+    font-size:3rem;
+}
+
+/* Player audio */
+.player_audio{
+    position:fixed;
+    bottom:0;
+    height:100px;
+    background-color: var(--principale);
+    width:100vw;
+    z-index:100;
+}
+
+/* Page de connexion */
+.formconnexion{
+    height:100%;
+    text-align: center;
+}
+.formconnexion > form{
+    height:50%;
+    padding-top:40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.formconnexion > h3{
+    text-align: center;
+    font-size:1.8rem;
+    padding-top:60px;
+}
+.input_form{
+    width:50%;
+    height:20%;
+    border:4px solid var(--principale);
+    font-size:2rem;
+    margin-bottom:40px;
+    border-radius: 10px;
+    padding:10px;
+}
+.remember{
+    width:50%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left:10px;
+}
+button.bouton_auth{
+    width:50%;
+    border:5px solid var(--principale);
+    border-radius:60px;
+    color:var(--principale);
+    text-align: center;
+    background-color: white;
+    height:15%;
+    font-size:1.8rem;
+    margin-top:40px;
+}
+button.bouton_auth:hover{
+    color:white;
+    background-color: var(--principale);
+    cursor: pointer;
+}
+.mdpoublie{
+    color:var(--secondaire);
+}
+.erreurlogin{
+    color:red;
+    padding-bottom:20px;
+}
+.versinscription{
+    text-decoration: none;
+    color:var(--principale);
+}
+
+
+
+/* Custom checkbox */
+/* The container */
+.my_checkbox {
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.my_checkbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border:1px solid var(--grisclair);
+}
+
+/* On mouse-over, add a grey background color */
+.my_checkbox:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.my_checkbox input:checked ~ .checkmark {
+    background-color: var(--principale);
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.my_checkbox input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.my_checkbox .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*nav{
     display:flex;
     justify-content: space-between;
     align-items: center;
-    background: var(--principale);  /* fallback for old browsers */
+    background: var(--principale);
     color: white;
     padding-left:25px;
     padding-right:25px;
@@ -146,9 +567,6 @@ header{
 .audio-player #play-btn.pause {
     background-image: url('http://www.lukeduncan.me/images/pause-button.png');
 }
-
-
-/* Barre de recherche */
 
 .formrecherche{
     position: relative;
@@ -267,7 +685,6 @@ button[type=submit]{
     background-position: center;
 }
 
-/* Menu côté */
 .menucote > div:nth-child(1){
     display:flex;
     height:25%;
@@ -292,7 +709,6 @@ button[type=submit]{
     color:var(--secondaire);
 }
 
-/* Page connexion */
 .fondbleu{
     background-color: var(--principale);
     width:100%;
@@ -333,4 +749,4 @@ button[type=submit]{
     to {
         transform: rotate(359deg);
     }
-}
+}*/
