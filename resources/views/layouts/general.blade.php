@@ -35,7 +35,7 @@
 
                 @auth
                 <div class="infos_user">
-                    <div class="photo_user"></div>
+                    <a href="/utilisateur/{{Auth::id()}}" data-pjax><div class="photo_user"></div></a>
                     <div class="infos">
                         <p>Utilisateur</p>
                         <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" role="button" data-pjax>
