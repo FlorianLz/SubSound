@@ -531,7 +531,13 @@ button.bouton_auth:hover{
     margin-bottom:100px;
 }
 
-
+.imp{
+    display: flex;
+    justify-content: space-around;
+}
+.lf{
+    margin-left:50px;
+}
 
 
 

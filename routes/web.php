@@ -29,6 +29,8 @@ Route::get('/utilisateur/{id}','FirstController@utilisateur')->where ('id', '[0-
 
 Route::get('/chanson/nouvelle', 'FirstController@nouvellechanson')->middleware('auth');
 
+Route::get('/playlist/nouvelle', 'FirstController@nouvelleplaylist')->middleware('auth');
+
 Route::get('/suivre/{id}', 'FirstController@suivre')->where ('id', '[0-9]+')->middleware('auth');
 
 Route::get('/like/{id}', 'FirstController@like')->where ('id', '[0-9]+')->middleware('auth');

@@ -30,7 +30,7 @@ class FirstController extends Controller
         $chansons=Chanson::all(); //SELECT * FROM chansons
 
 
-        return view("firstcontroller.index", ["chansons"=>$chansons,"active"=> "musique"]);
+        return view("firstcontroller.index", ["chansons"=>$chansons,"active"=> "accueil"]);
     }
 
     public function connexion(){
@@ -50,6 +50,10 @@ class FirstController extends Controller
         return view("firstcontroller.playlist", ["active" => "playlist"]);
     }
 
+    public function nouvelleplaylist(){
+        return view("firstcontroller.addPlaylist", ["active" => "playlist"]);
+    }
+
     public function article($id){
         return view("firstcontroller.article", ['id' => $id, 'nom' => 'Florian']);
     }
@@ -67,16 +71,21 @@ class FirstController extends Controller
         $request->validate([
             'nom' => 'required|min:3|max:255',
             'chanson' => 'required|file',
+            'chanson_img' => 'required|file',
             'style' => 'required|min:2',
         ]);
 
         $name= $request->file('chanson')->hashName();
         $request->file('chanson')->move("uploads/".Auth::id(), $name);
 
+        $name_img= $request->file('chanson_img')->hashName();
+        $request->file('chanson_img')->move("uploads/".Auth::id(), $name_img);
+
 
         $c = new Chanson();
         $c-> nom = $request->input('nom');
         $c-> url = "/uploads/".Auth::id()."/".$name;
+        $c-> url_img = "/uploads/".Auth::id()."/".$name_img;
         $c-> style = $request->input('style');
         $c-> user_id = Auth::id();
         $c->save(); //INSERT INTO chansons VALUES (NULL,...)
@@ -91,6 +100,6 @@ class FirstController extends Controller
 
     public function like($id){
         Auth::user()->jeLike()->toggle($id);
-        return redirect("/");
+        return redirect('/');
     }
 }

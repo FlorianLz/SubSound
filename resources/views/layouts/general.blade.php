@@ -52,7 +52,11 @@
                 <div class="menu">
                     <h3>MENU</h3>
                     <a href="/" data-pjax>
+                        @if($active ?? ''=='accueil')
                         <p id="accueil" class="accueil actif" onclick="changeractif(this.id);"><i class="fas fa-home"></i><span>Accueil</span></p>
+                        @else
+                            <p id="accueil" class="accueil" onclick="changeractif(this.id);"><i class="fas fa-home"></i><span>Accueil</span></p>
+                        @endif
                     </a>
                 @guest
                 </div>
@@ -77,7 +81,7 @@
                 </div>
 
                 <div class="vosplaylists">
-                    <div><h3>VOS PLAYLISTS</h3><a href="/chanson/nouvelle" data-pjax><i class="fas fa-plus-circle"></i></a></div>
+                    <div><h3>VOS PLAYLISTS</h3><a href="/playlist/nouvelle" data-pjax><i class="fas fa-plus-circle"></i></a></div>
                     <a href="/playlist" data-pjax>
                         <p class="playlist"><i class="fas fa-file-audio"></i><span>Playlist 1</span></p>
                     </a>

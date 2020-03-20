@@ -16,9 +16,10 @@ class CreateChansonTable extends Migration
         Schema::create('chanson', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('url');
+            $table->string('url_image');
             $table->string('nom');
             $table->string('style');
-            $table->int('user_id');
+            $table->integer('user_id');
             $table->timestamps();
         });
     }
