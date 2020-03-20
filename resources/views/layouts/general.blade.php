@@ -52,7 +52,7 @@
                 <div class="menu">
                     <h3>MENU</h3>
                     <a href="/" data-pjax>
-                        <p class="accueil actif"><i class="fas fa-home"></i><span>Accueil</span></p>
+                        <p id="accueil" class="accueil actif" onclick="changeractif(this.id);"><i class="fas fa-home"></i><span>Accueil</span></p>
                     </a>
                 @guest
                 </div>
@@ -64,15 +64,15 @@
                 @else
                     <div class="lienmusique">
                         <a href="/musiques" data-pjax>
-                            <p class="musique"><i class="fas fa-music"></i><span>Musique</span></p>
+                            <p id="musique" class="musique" onclick="changeractif(this.id);"><i class="fas fa-music"></i><span>Musique</span></p>
                         </a>
-                        <a href="/chanson/nouvelle" data-pjax><i class="fas fa-plus-circle"></i></a>
+                        <a href="/chanson/nouvelle" alt="musique" onclick="changeractif(this.alt);" data-pjax><i class="fas fa-plus-circle"></i></a>
                     </div>
                     <a href="/playlist" data-pjax>
-                        <p class="playlist"><i class="fas fa-file-audio"></i><span>Playlist</span></p>
+                        <p id="playlist" class="playlist" onclick="changeractif(this.id);"><i class="fas fa-file-audio"></i><span>Playlist</span></p>
                     </a>
                     <a href="/favoris" data-pjax>
-                        <p class="favoris"><i class="fas fa-star"></i><span>Favoris</span></p>
+                        <p id="favoris" class="favoris" onclick="changeractif(this.id);"><i class="fas fa-star"></i><span>Favoris</span></p>
                     </a>
                 </div>
 

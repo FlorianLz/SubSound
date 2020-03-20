@@ -42,7 +42,8 @@ class FirstController extends Controller
     }
 
     public function favoris(){
-        return view("firstcontroller.favoris", ["active" => "favoris"]);
+        $chansons=Chanson::all(); //SELECT * FROM chansons
+        return view("firstcontroller.favoris", ["chansons"=>$chansons,"active" => "favoris"]);
     }
 
     public function playlist(){

@@ -3,6 +3,18 @@ $(document).on('submit', 'form[data-pjax]', function(event) {
     $.pjax.submit(event, '#pjax-container')
 });
 
+function changeractif(id){
+    let accueil=document.getElementById('accueil');
+    let musique=document.getElementById('musique');
+    let playlist=document.getElementById('playlist');
+    let favoris=document.getElementById('favoris');
+    accueil.classList.remove('actif');
+    musique.classList.remove('actif');
+    playlist.classList.remove('actif');
+    favoris.classList.remove('actif');
+    document.getElementById(id).classList.add('actif');
+}
+
 
 function initProgressBar() {
     let player = document.getElementById('player');
