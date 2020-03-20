@@ -52,6 +52,6 @@ class User extends Authenticatable
     }
 
     public function jeLike(){
-        return $this->belongsToMany("App\User", "like", "user_id", "chanson_id");
+        return $this->belongsToMany("App\Chanson", "like", "user_id", "chanson_id");
     }
 }
