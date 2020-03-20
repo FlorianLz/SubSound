@@ -381,7 +381,76 @@ button.bouton_auth:hover{
     transform: rotate(45deg);
 }
 
+/*add chansons */
 
+.formconnexion .col {
+    color:var(--secondaire);
+}
+
+.formconnexion .bouton_aut{
+    width: 50%;
+    border: 5px solid var(--principale);
+    border-radius: 60px;
+    color: var(--principale);
+    text-align: center;
+    background-color: white;
+    height: 15%;
+    font-size: 1.8rem;
+    margin-top: 40px;
+}
+.input_file{
+    display: none;
+}
+
+.label-file{
+    font-size:24px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.fit-file {
+    margin-left: 100px;
+}
+
+/* Favoris */
+
+.listfavor{
+    display: flex;
+    align-items: center;
+}
+.listfavor span:nth-child(1){
+    display:flex;
+    align-items: center;
+    width: 30%;
+}
+.listfavor span:nth-child(2){
+    width: 20%;
+}
+.listfavor span:nth-child(3){
+    width: 20%;
+}
+.listfavor span:nth-child(4){
+    width: 20%;
+}
+.listfavor span:nth-child(5){
+    width: 10%;
+}
+.listfavor span{
+    color:var(--grisclair);
+    font-size: 18px;
+}
+.titrefav{
+    color:var(--secondaire) !important;
+}
+.esp{
+    margin-right:5px;
+}
+.fit-picture{
+    width:60px;
+    height:60px;
+    margin-right:10px;
+}
 
 
 

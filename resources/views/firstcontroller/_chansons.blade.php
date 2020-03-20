@@ -11,9 +11,9 @@
                     @guest
                     @else
                         @if(Auth::user()->jeLike->contains($c->id))
-                            <a class="a_like" href="/like/{{$c->id}}"><i class="fas fa-heart jelike"></i></a>
+                            <a data-pjax class="a_like" href="/like/{{$c->id}}"><i class="fas fa-heart jelike"></i></a>
                         @else
-                            <a class="a_like" href="/like/{{$c->id}}"><i class="far fa-heart jelikepas"></i></a>
+                            <a data-pjax class="a_like" href="/like/{{$c->id}}"><i class="far fa-heart jelikepas"></i></a>
                         @endif
                     @endguest
                 </div>
