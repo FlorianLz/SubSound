@@ -31,11 +31,15 @@ Route::get('/chanson/nouvelle', 'FirstController@nouvellechanson')->middleware('
 
 Route::get('/playlist/nouvelle', 'FirstController@nouvelleplaylist')->middleware('auth');
 
+Route::get('/infosplaylist/{id}', 'FirstController@infosplaylist')->where ('id', '[0-9]+')->middleware('auth');
+
 Route::get('/suivre/{id}', 'FirstController@suivre')->where ('id', '[0-9]+')->middleware('auth');
 
 Route::get('/like/{id}', 'FirstController@like')->where ('id', '[0-9]+')->middleware('auth');
 
 Route::post('/chanson/create', 'FirstController@creerchanson');
+
+Route::post('/playlist/create', 'FirstController@creerplaylist');
 
 Route::post('/', 'FirstController@index');
 

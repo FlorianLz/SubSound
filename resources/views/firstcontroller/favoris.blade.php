@@ -3,7 +3,6 @@
     <div>
         <div>
             <div class="titre"><h2>Mes favoris</h2></div>
-            <form></form>
         </div>
         @foreach($chansons as $c)
             @if(Auth::user()->ILike->contains($c->id))
@@ -17,6 +16,5 @@
                 </div>
             @endif
         @endforeach
-
     </div>
 @endsection
