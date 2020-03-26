@@ -37,6 +37,8 @@ Route::get('/suivre/{id}', 'FirstController@suivre')->where ('id', '[0-9]+')->mi
 
 Route::get('/like/{id}', 'FirstController@like')->where ('id', '[0-9]+')->middleware('auth');
 
+Route::get('/recherche/{s}','FirstController@recherche');
+
 Route::post('/chanson/create', 'FirstController@creerchanson');
 
 Route::post('/playlist/create', 'FirstController@creerplaylist');

@@ -93,6 +93,10 @@
                 </div>
 
             <div id="main">
+                <form id="search" data-pjax>
+                    <input type="search" name="search"  required />
+                    <input type="submit" />
+                </form>
                 <div id="pjax-container" class="contenumain">
                     @yield('contenu')
                 </div>

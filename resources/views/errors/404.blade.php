@@ -1,4 +1,6 @@
 @extends('layouts.general')
 @section('contenu')
-    <h1>OOOOPSSSS</h1>
+    <div class="error404">
+        <img  src="img/logo404.png" alt="404 error">
+    </div>
 @endsection

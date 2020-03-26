@@ -560,6 +560,53 @@ button.bouton_auth:hover{
     color:var(--secondaire);
 }
 
+/*form search*/
+
+#search{
+    position: absolute;
+    right:10px;
+    margin-top:30px;
+
+}
+#search input[type=search]{
+    padding: 5px;
+    font-size: 17px;
+    float: left;
+    width: 80%;
+    background: #f1f1f1;
+    border:none;
+}
+
+#search input[type=submit]{
+    float: left;
+    width: 20%;
+    padding: 5px;
+    background: var(--principale);
+    color: white;
+    font-size: 17px;
+    border:none;
+    cursor: pointer;
+}
+
+/* recherche */
+
+.rsize{
+    font-size:20px;
+}
+
+
+/* page 404 */
+
+.error404{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:100%;
+}
+.error404 img {
+    height:600px;
+}
+
 
 
 

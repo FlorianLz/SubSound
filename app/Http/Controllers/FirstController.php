@@ -127,4 +127,10 @@ class FirstController extends Controller
         $c->save();
         return redirect("/");
     }
+
+    public function recherche($s) {
+        $users = User::WhereRaw("name LIKE CONCAT('%',?, '%')" ,[$s])->get();
+        $chansons = Chanson::WhereRaw("nom LIKE CONCAT('%',?, '%')" ,[$s])->get();
+        return view("firstcontroller.recherche", ['utilisateurs' =>$users , 'chansons'=>$chansons]);
+    }
 }
