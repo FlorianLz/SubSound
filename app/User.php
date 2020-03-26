@@ -43,6 +43,12 @@ class User extends Authenticatable
         //le ? = $this->>id
     }
 
+    public function playlist(){
+        return $this->hasMany("App\Playlist", "user_id");
+        //SELECT * FROM playlist WHERE user_id=?
+        //le ? = $this->>id
+    }
+
     public function jeLesSuit(){
         return $this->belongsToMany("App\User", "connexion", "suiveur_id", "suivi_id");
     }
@@ -54,10 +60,15 @@ class User extends Authenticatable
     public function jeLike(){
         return $this->belongsToMany("App\Chanson", "like", "user_id", "chanson_id");
     }
+
     public function ILike(){
         return $this->belongsToMany("App\Chanson", "like", "user_id", "chanson_id");
     }
+
     public function nom(){
         return $this->name;
+    }
+    public function dansLaPlaylist(){
+        return $this->belongsToMany("App\Chanson", "contenuplaylist", "playlist_id", "chanson_id");
     }
 }

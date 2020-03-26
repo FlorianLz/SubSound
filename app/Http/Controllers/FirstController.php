@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Chanson;
+use App\Playlist;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -47,7 +48,8 @@ class FirstController extends Controller
     }
 
     public function playlist(){
-        return view("firstcontroller.playlist", ["active" => "playlist"]);
+        $playlists=Playlist::all();  //SELECT * FROM playlist
+        return view("firstcontroller.playlist", ["chansons"=>$playlists,"active" => "playlist"]);
     }
 
     public function nouvelleplaylist(){
@@ -56,6 +58,11 @@ class FirstController extends Controller
 
     public function article($id){
         return view("firstcontroller.article", ['id' => $id, 'nom' => 'Florian']);
+    }
+
+    public function infosplaylist($id){
+        $chansons=Chanson::all();  //SELECT * FROM playlist
+        return view("firstcontroller.infosplaylist", ["chansons"=>$chansons,"active" => "playlist"]);
     }
 
     public function utilisateur($id){
@@ -101,5 +108,23 @@ class FirstController extends Controller
     public function like($id){
         Auth::user()->jeLike()->toggle($id);
         return redirect('/');
+    }
+
+    public function creerplaylist(Request $request){
+        $request->validate([
+            'nom' => 'required|min:3|max:255',
+            'imgMusiq' => 'required|file',
+        ]);
+
+        $name= $request->file('imgMusiq')->hashName();
+        $request->file('imgMusiq')->move("uploads/".Auth::id(), $name);
+
+
+        $c = new Playlist();
+        $c-> nom = $request->input('nom');
+        $c-> url_image = "/uploads/".Auth::id()."/".$name;
+        $c-> user_id = Auth::id();
+        $c->save();
+        return redirect("/");
     }
 }
