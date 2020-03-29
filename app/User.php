@@ -65,10 +65,7 @@ class User extends Authenticatable
         return $this->belongsToMany("App\Chanson", "like", "user_id", "chanson_id");
     }
 
-    public function nom(){
-        return $this->name;
-    }
-    public function dansLaPlaylist(){
+    public function aLaChanson(){
         return $this->belongsToMany("App\Chanson", "contenuplaylist", "playlist_id", "chanson_id");
     }
 }

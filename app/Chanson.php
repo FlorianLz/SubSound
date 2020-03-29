@@ -15,8 +15,14 @@ class Chanson extends Model
 
     }
 
+    public function playlist(){
+        return $this->belongsTo("App\Playlist", "playlist_id");
+        // SELECT * FROM playlist WHERE playlists_id=?
+        //et le ? est remplacè par le $this->id
+
+    }
+
     public function elleEstLikee(){
         return $this->belongsToMany("App\Chanson", "like", "chanson_id", "user_id");
     }
-
 }

@@ -538,6 +538,29 @@ button.bouton_auth:hover{
 .lf{
     margin-left:50px;
 }
+.suivre{
+    text-decoration: none;
+    color: var(--secondaire);
+    margin-top:20px;
+    font-size: 20px;
+}
+.suivre:hover{
+    color: var(--principale);
+}
+.noUser{
+    margin-top:50px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 80%;
+}
+.noUser div{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    color:var(--secondaire);
+}
 
 /* Page playlists */
 .fit-play{

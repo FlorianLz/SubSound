@@ -61,8 +61,9 @@ class FirstController extends Controller
     }
 
     public function infosplaylist($id){
-        $chansons=Chanson::all();  //SELECT * FROM playlist
-        return view("firstcontroller.infosplaylist", ["chansons"=>$chansons,"active" => "playlist"]);
+        $chansons=Chanson::all();
+        $playlist=Playlist::findOrFail($id);  //SELECT * FROM playlist
+        return view("firstcontroller.infosplaylist", ["playlist"=>$playlist,"chansons"=>$chansons,"active" => "playlist"]);
     }
 
     public function utilisateur($id){
