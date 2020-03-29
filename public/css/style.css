@@ -70,6 +70,7 @@ body{
     height:60px;
     background-color:var(--principale);
     border-radius:60px;
+    background-size:cover;
 }
 .infos{
     padding-left: 30px;
@@ -84,6 +85,11 @@ body{
     border:1px solid grey;
     border-radius:5px;
     text-align: center;
+    padding:0px 10px;
+}
+.infos > a > p:hover{
+    background-color: var(--principale);
+    color:white;
 }
 
 .menu, .vosplaylists{
