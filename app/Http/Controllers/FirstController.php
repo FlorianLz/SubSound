@@ -30,8 +30,15 @@ class FirstController extends Controller
 
         $chansons=Chanson::all(); //SELECT * FROM chansons
 
+        if(Auth::id()){
+            $user=User::findOrFail(Auth::id());
+            return view("firstcontroller.index", ["chansons"=>$chansons,"active"=> "accueil","utilisateur"=>$user]);
+        }else{
+            return view("firstcontroller.index", ["chansons"=>$chansons,"active"=> "accueil"]);
+        }
 
-        return view("firstcontroller.index", ["chansons"=>$chansons,"active"=> "accueil"]);
+
+
     }
 
     public function connexion(){

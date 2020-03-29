@@ -35,9 +35,9 @@
 
                 @auth
                 <div class="infos_user">
-                    <a href="/utilisateur/{{Auth::id()}}" data-pjax><div class="photo_user" style="background-image: url('{{$utilisateur->url_avatar}}')"></div></a>
+                    <a href="/utilisateur/{{Auth::id()}}" data-pjax><div class="photo_user" style="background-image: url('{{$utilisateur->url_avatar ?? ''}}')"></div></a>
                     <div class="infos">
-                        <p>{{$utilisateur->name}}</p>
+                        <p>{{$utilisateur->name ?? ''}}</p>
                         <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" role="button" data-pjax>
                             <p>Déconnexion</p>
                         </a>
@@ -102,7 +102,26 @@
                 </div>
             </div>
 
-            <div class="player_audio"></div>
+            <div class="audio-player" id="audio-player">
+                <div id="lancement" class="lancement"><h2>Bienvenue sur SubSound !!!</h2></div>
+                <div id="play-btn"></div>
+                <div class="audio-wrapper" id="player-container">
+                    <audio id="player" ontimeupdate="initProgressBar()">
+                        <source src="http://www.lukeduncan.me/oslo.mp3" type="audio/mp3">
+                    </audio>
+                </div>
+                <div class="player-controls scrubber">
+                    <p id="titremusique"></p>
+                    <span id="seekObjContainer">
+			            <progress id="seekObj" value="0" max="1"></progress>
+			        </span>
+                    <br>
+                    <small style="float: left; position: relative; left: 15px;" class="start-time"></small>
+                    <small style="float: right; position: relative; right: 20px;" class="end-time"></small>
+
+                </div>
+                <div class="album-image" style="background-image: url('https://artwork-cdn.7static.com/static/img/sleeveart/00/051/614/0005161476_350.jpg')"></div>
+            </div>
 
             <script src="/js/jquery.js"></script>
             <script src="/js/jquery.pjax.js"></script>

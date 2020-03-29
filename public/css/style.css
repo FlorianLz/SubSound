@@ -234,16 +234,6 @@ a.a_like > i{
     font-size:3rem;
 }
 
-/* Player audio */
-.player_audio{
-    position:fixed;
-    bottom:0;
-    height:100px;
-    background-color: var(--principale);
-    width:100vw;
-    z-index:100;
-}
-
 /* Page de connexion */
 .formconnexion{
     height:100%;
@@ -636,7 +626,91 @@ button.bouton_auth:hover{
     height:600px;
 }
 
+/* Player audio */
+.audio-player {
+    border: 1px solid #dfdfdf;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    flex-flow: row;
+    position:fixed;
+    bottom:0;
+    height:100px;
+    background-color: var(--principale);
+    width:100vw;
+    z-index:100;
+    color:white;
+}
+.lancement{
+    position:absolute;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    background-color: var(--principale);
+    display: flex;
+    align-items: center;
+    color:white;
+    overflow:hidden;
+}
+.lancement > h2{
+    position:absolute;
+    display:inline-table;
+    animation:gauche-droite 10s;
+    left:50%;
+    transform: translateX(-50%);
+}
+@keyframes gauche-droite {
+    0% {
+        left:-20%;
+    }
+    100% {
+        left:50%;
+        transform: translateX(-50%);
+    }
+}
 
+.audio-player .album-image {
+    min-height: 100px;
+    width: 110px;
+    background-size: cover;
+}
+.audio-player .player-controls {
+    align-items: center;
+    justify-content: center;
+    flex: 3;
+}
+.audio-player .player-controls progress {
+    width: 90%;
+}
+.audio-player .player-controls progress[value] {
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: white;
+    color: var(--secondaire);
+    height: 10px;
+}
+.audio-player .player-controls progress[value]::-webkit-progress-bar {
+    background-color: white;
+    border-radius: 2px;
+    border: 1px solid #dfdfdf;
+    color: var(--secondaire);
+}
+.audio-player .player-controls progress::-webkit-progress-value {
+    background-color: var(--secondaire);
+}
+.audio-player .player-controls p {
+    font-size: 1.6rem;
+}
+.audio-player #play-btn {
+    background-image: url("http://www.lukeduncan.me/images/play-button.png");
+    background-size: cover;
+    width: 75px;
+    height: 75px;
+}
+.audio-player #play-btn.pause {
+    background-image: url("http://www.lukeduncan.me/images/pause-button.png");
+}
 
 
 
@@ -772,60 +846,7 @@ header{
 }
 
 
-.audio-player {
-    background: white;
-    border: 1px solid #dfdfdf;
-    width: 100%;
-    text-align: center;
-    flex-flow: row;
-    display:none;
-    grid-area:a;
-}
-.audio-player .album-image {
-    min-height: 100px;
-    width: 10%;
-    background-size: contain;
-    background-repeat: no-repeat;
-}
-.audio-player .player-controls {
-    align-items: center;
-    justify-content: center;
-    margin-top: 2.5rem;
-    flex: 3;
-    width:90%;
-}
-.audio-player .player-controls progress {
-    width: 90%;
-}
-.audio-player .player-controls progress[value] {
-    -webkit-appearance: none;
-    appearance: none;
-    background-color: white;
-    color: blue;
-    height: 5px;
-}
-.audio-player .player-controls progress[value]::-webkit-progress-bar {
-    background-color: white;
-    border-radius: 2px;
-    border: 1px solid #dfdfdf;
-    color: blue;
-}
-.audio-player .player-controls progress::-webkit-progress-value {
-    background-color: blue;
-}
-.audio-player .player-controls p {
-    font-size: 1.6rem;
-}
-.audio-player #play-btn {
-    background-image: url('http://www.lukeduncan.me/images/play-button.png');
-    background-size: cover;
-    width: 75px;
-    height: 75px;
-    margin: 2rem 0 2rem 2rem;
-}
-.audio-player #play-btn.pause {
-    background-image: url('http://www.lukeduncan.me/images/pause-button.png');
-}
+
 
 .formrecherche{
     position: relative;
