@@ -465,6 +465,26 @@ button.bouton_auth:hover{
 }
 .titrefav{
     color:var(--secondaire) !important;
+    position:relative;
+}
+.titrefav > .boutonlecture{
+    display:block;
+    position:absolute;
+    font-size:2rem;
+    color:#e2e2e2;
+    left:15px;
+    z-index: 100;
+}
+.titrefav:hover > .boutonlecture{
+    display:block;
+    position:absolute;
+    font-size:2rem;
+    color:#e2e2e2;
+    left:15px;
+    z-index: 100;
+}
+.titrefav:hover > .fit-picture{
+    filter:brightness(70%);
 }
 .esp{
     margin-right:5px;

@@ -141,4 +141,9 @@ class FirstController extends Controller
         $chansons = Chanson::WhereRaw("nom LIKE CONCAT('%',?, '%')" ,[$s])->get();
         return view("firstcontroller.recherche", ['utilisateurs' =>$users , 'chansons'=>$chansons]);
     }
+
+    public function ajoutplaylist($idplaylist,$idchanson){
+        Playlist::findOrFail($idplaylist)->aLaChanson()->toggle($idchanson);
+        return redirect('/');
+    }
 }

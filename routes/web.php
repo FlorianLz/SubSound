@@ -31,6 +31,8 @@ Route::get('/chanson/nouvelle', 'FirstController@nouvellechanson')->middleware('
 
 Route::get('/playlist/nouvelle', 'FirstController@nouvelleplaylist')->middleware('auth');
 
+Route::get('/playlist/update/{idplaylist}/{idchanson}', 'FirstController@ajoutplaylist')->where ('id', '[0-9]+')->middleware('auth');
+
 Route::get('/infosplaylist/{id}', 'FirstController@infosplaylist')->where ('id', '[0-9]+')->middleware('auth');
 
 Route::get('/suivre/{id}', 'FirstController@suivre')->where ('id', '[0-9]+')->middleware('auth');
