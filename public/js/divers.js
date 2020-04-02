@@ -35,10 +35,10 @@ $(document).ready(function () {
     /* Hover logo */
     $('#logo')
         .mouseover(function () {
-            $(this).attr("src", "/img/logo.gif");
+            $(this).attr("src", "/img/logo67.gif");
         })
         .mouseout(function () {
-            $(this).attr("src", "/img/logo.png");
+            $(this).attr("src", "/img/logo67.png");
         });
 });
 $('#search').submit(function (e) {
@@ -124,11 +124,13 @@ function initPlayers(num) {
                 if (player.paused === false) {
                     player.pause();
                     isPlaying = false;
-                    $('#play-btn').removeClass('pause');
+                    $('#play-btn').removeClass('pause').attr('data-status','pause');
+                    $('.encours').removeClass('rotate lecture');
 
                 } else {
                     player.play();
-                    $('#play-btn').addClass('pause');
+                    $('#play-btn').addClass('pause').attr('data-status','lecture');
+                    $('.encours').addClass('rotate');
                     isPlaying = true;
                 }
             }

@@ -8,7 +8,7 @@
         <div class="playlistt">
             @foreach($chansons as $c)
                 @if(Auth::user()->playlist->contains($c->id))
-                    <a href="infosplaylist/{{$c->id}}">
+                    <a href="infosplaylist/{{$c->id}}" data-pjax>
                         <div class="listplaylist">
                             <img class="fit-play" src="{{$c->url_image}}" alt="Image de la playlist">
                             <p>{{$c->nom}}</p>

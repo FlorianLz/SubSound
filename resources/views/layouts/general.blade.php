@@ -31,7 +31,7 @@
             </header>
 
             <div class="menucote">
-                <a class="logo_a" href="/" data-pjax><img class="logomenu" src="/img/logo.png" alt="SubSound"></a>
+                <a class="logo_a" href="/" data-pjax><img id="logo" class="logomenu" src="/img/logo67.png" alt="SubSound"></a>
 
                 @auth
                 <div class="infos_user">
@@ -104,7 +104,7 @@
 
             <div class="audio-player" id="audio-player">
                 <div id="lancement" class="lancement"><h2>Bienvenue sur SubSound !!!</h2></div>
-                <div id="play-btn"></div>
+                <div id="play-btn" data-id="0"></div>
                 <div class="audio-wrapper" id="player-container">
                     <audio id="player" ontimeupdate="initProgressBar()">
                         <source src="http://www.lukeduncan.me/oslo.mp3" type="audio/mp3">
@@ -129,3 +129,12 @@
         </body>
     </html>
     @endif
+
+<script>
+    if (document.getElementById('play-btn').getAttribute('data-id') != 0 && document.getElementById('play-btn').getAttribute('data-status') === 'lecture'){
+        document.getElementById('imgchanson'+document.getElementById('play-btn').getAttribute('data-id')).classList.add('rotate');
+        document.getElementById('infoschanson'+document.getElementById('play-btn').getAttribute('data-id')).classList.add('rotate');
+        document.getElementById('imgchanson'+document.getElementById('play-btn').getAttribute('data-id')).classList.add('encours');
+        document.getElementById('infoschanson'+document.getElementById('play-btn').getAttribute('data-id')).classList.add('encours');
+    }
+</script>
