@@ -145,7 +145,8 @@ class FirstController extends Controller
     public function recherche($s) {
         $users = User::WhereRaw("name LIKE CONCAT('%',?, '%')" ,[$s])->get();
         $chansons = Chanson::WhereRaw("nom LIKE CONCAT('%',?, '%')" ,[$s])->get();
-        return view("firstcontroller.recherche", ['utilisateurs' =>$users , 'chansons'=>$chansons]);
+        $playlists=Playlist::all();
+        return view("firstcontroller.recherche", ['utilisateurs' =>$users , 'chansons'=>$chansons,'playlists'=>$playlists]);
     }
 
     public function ajoutplaylist($idplaylist,$idchanson){
