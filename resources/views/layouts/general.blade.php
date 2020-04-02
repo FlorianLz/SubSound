@@ -82,12 +82,14 @@
 
                 <div class="vosplaylists">
                     <div><h3>VOS PLAYLISTS</h3><a href="/playlist/nouvelle" data-pjax><i class="fas fa-plus-circle"></i></a></div>
-                    <a href="/playlist" data-pjax>
-                        <p class="playlist"><i class="fas fa-file-audio"></i><span>Playlist 1</span></p>
-                    </a>
-                    <a href="/playlist" data-pjax>
-                        <p class="playlist"><i class="fas fa-file-audio"></i><span>Playlist 2</span></p>
-                    </a>
+
+                    @foreach($playlists as $c)
+                        @if(Auth::user()->playlist->contains($c->id))
+                                <a href="{{URL::to('/')}}/infosplaylist/{{$c->id}}" data-pjax>
+                                <p class="playlist"><i class="fas fa-file-audio"></i><span>{{$c->nom}}</span></p>
+                            </a>
+                        @endif
+                    @endforeach
                 </div>
                 @endguest
                 </div>

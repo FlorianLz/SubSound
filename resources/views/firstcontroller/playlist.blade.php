@@ -6,7 +6,7 @@
             <form></form>
         </div>
         <div class="playlistt">
-            @foreach($chansons as $c)
+            @foreach($playlists as $c)
                 @if(Auth::user()->playlist->contains($c->id))
                     <a href="infosplaylist/{{$c->id}}" data-pjax>
                         <div class="listplaylist">

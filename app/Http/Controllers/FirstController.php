@@ -29,10 +29,11 @@ class FirstController extends Controller
         //$c->save(); //MAJ BDD
 
         $chansons=Chanson::all(); //SELECT * FROM chansons
+        $playlists=Playlist::all(); //SELECT * FROM playlist
 
         if(Auth::id()){
             $user=User::findOrFail(Auth::id());
-            return view("firstcontroller.index", ["chansons"=>$chansons,"active"=> "accueil","utilisateur"=>$user]);
+            return view("firstcontroller.index", ["chansons"=>$chansons,"active"=> "accueil","utilisateur"=>$user,"playlists"=>$playlists]);
         }else{
             return view("firstcontroller.index", ["chansons"=>$chansons,"active"=> "accueil"]);
         }
@@ -51,12 +52,15 @@ class FirstController extends Controller
 
     public function favoris(){
         $chansons=Chanson::all(); //SELECT * FROM chansons
-        return view("firstcontroller.favoris", ["chansons"=>$chansons,"active" => "favoris"]);
+        $playlists=Playlist::all(); //SELECT * FROM playlist
+        $user=User::findOrFail(Auth::id());
+        return view("firstcontroller.favoris", ["chansons"=>$chansons,"active" => "favoris","utilisateur"=>$user,"playlists"=>$playlists]);
     }
 
     public function playlist(){
         $playlists=Playlist::all();  //SELECT * FROM playlist
-        return view("firstcontroller.playlist", ["chansons"=>$playlists,"active" => "playlist"]);
+        $user=User::findOrFail(Auth::id());
+        return view("firstcontroller.playlist", ["playlists"=>$playlists,"active" => "playlist","utilisateur"=>$user]);
     }
 
     public function nouvelleplaylist(){
@@ -70,7 +74,9 @@ class FirstController extends Controller
     public function infosplaylist($id){
         $chansons=Chanson::all();
         $playlist=Playlist::findOrFail($id);  //SELECT * FROM playlist
-        return view("firstcontroller.infosplaylist", ["playlist"=>$playlist,"chansons"=>$chansons,"active" => "playlist"]);
+        $playlists=Playlist::all();
+        $user=User::findOrFail(Auth::id());
+        return view("firstcontroller.infosplaylist", ["playlist"=>$playlist,"chansons"=>$chansons,"active" => "playlist","utilisateur"=>$user,"playlists"=>$playlists]);
     }
 
     public function utilisateur($id){
