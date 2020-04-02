@@ -165,14 +165,21 @@ a.bouton_auth:hover{
 .chansons{
     display:flex;
     flex-wrap: wrap;
-    height: 100%;
+    height: 90vh;
     overflow: auto;
     align-items: center;
     justify-content: space-evenly;
+    padding-bottom:100px;
+}
+.div_chansons{
+    height:90vh;
+    position:fixed;
+    overflow: hidden;
+    padding-right:50px;
 }
 .chanson{
-    width:17vw;
-    height:17vw;
+    width:20%;
+    height:20%;
     border-radius: 200px;
     margin-bottom:20px;
     overflow: hidden;
@@ -459,6 +466,13 @@ button.bouton_auth:hover{
 .listfavor span:nth-child(5){
     width: 10%;
 }
+.listfavor span:nth-child(5) > a{
+    text-decoration: none;
+    color:var(--grisclair);
+}
+.listfavor span:nth-child(5) > a:hover{
+    color:var(--principale);
+}
 .listfavor span{
     color:var(--grisclair);
     font-size: 18px;
@@ -742,6 +756,7 @@ button.bouton_auth:hover{
     background-size: cover;
     width: 75px;
     height: 75px;
+    margin-left:15px;
 }
 .audio-player #play-btn.pause {
     background-image: url("http://www.lukeduncan.me/images/pause-button.png");
@@ -752,7 +767,7 @@ button.bouton_auth:hover{
 .flip-card {
     width: 300px;
     height: 300px;
-    margin-top:80px;
+    margin-top:60px;
 }
 
 .flip-card-inner {

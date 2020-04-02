@@ -32,8 +32,8 @@
 <script src="/js/jquery.js"></script>
 <script>
     $(".boutonplay").click(function () {
-        $('.imgchanson').removeClass('encours');
-        $('.infoschanson').removeClass('encours');
+        $('.imgchanson').removeClass('encours').removeClass('rotate');
+        $('.infoschanson').removeClass('encours').removeClass('rotate');
         let url = $(this).attr('data-file');
         let titre = $(this).attr('data-titre');
         let id = $(this).attr('data-id');
@@ -60,7 +60,7 @@
         document.getElementById('flip-card-inner'+id).classList.add('flip-card-inner-rot');
         setTimeout(function(){
             document.getElementById('flip-card-front'+id).style.display="none";
-            }, 500);
+            }, 700);
     });
 
 </script>

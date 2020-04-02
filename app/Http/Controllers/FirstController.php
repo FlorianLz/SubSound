@@ -151,6 +151,6 @@ class FirstController extends Controller
 
     public function ajoutplaylist($idplaylist,$idchanson){
         Playlist::findOrFail($idplaylist)->aLaChanson()->toggle($idchanson);
-        return redirect('/');
+        return redirect('/infosplaylist/'.$idplaylist);
     }
 }

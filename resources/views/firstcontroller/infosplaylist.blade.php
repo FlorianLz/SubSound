@@ -14,7 +14,7 @@
                 <span>{{$c->utilisateur->name}}</span>
                 <span>13:30</span>
                 <span><i class="far fa-heart jelikepas esp"></i>{{$c->elleEstLikee()->count()}}</span>
-                <span>x</span>
+                <span><a href="/playlist/update/{{$playlist->id}}/{{$c->id}}" data-pjax>x</a></span>
             </div>
         @endif
     @endforeach
