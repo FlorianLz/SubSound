@@ -2,20 +2,28 @@
     <div class="titre"><h2>Les derniers ajouts</h2></div>
     <div class="chansons" onload="initPlayers()">
         @foreach($chansons as $c)
-            <div class="chanson">
-                <div class="chanson">
-                    <div id ="imgchanson{{$c->id}}" class="imgchanson"></div>
-                    <div id ="infoschanson{{$c->id}}" class="infoschanson" style="background-image: url('{{$c->url_img}}')"></div>
-                    <h4 class="titrechanson">{{$c->nom}}</h4>
-                    <div class="boutonplay" data-file="{{$c->url}}" data-titre="{{$c->nom}}" data-image="{{$c->url_img}}" data-id="{{$c->id}}" data-pjax></div>
-                    @guest
-                    @else
-                        @if(Auth::user()->jeLike->contains($c->id))
-                            <a data-pjax class="a_like" href="/like/{{$c->id}}"><i class="fas fa-heart jelike"></i></a>
+            <div class="flip-card" id="flip-card">
+                <div class="flip-card-inner" id="flip-card-inner{{$c->id}}">
+                    <div class="chanson flip-card-front " id="flip-card-front{{$c->id}}">
+                        <div id ="imgchanson{{$c->id}}" class="imgchanson"></div>
+                        <div id ="infoschanson{{$c->id}}" class="infoschanson" style="background-image: url('{{$c->url_img}}')"></div>
+                        <h4 class="titrechanson">{{$c->nom}}</h4>
+                        <div class="boutonplay" data-file="{{$c->url}}" data-titre="{{$c->nom}}" data-image="{{$c->url_img}}" data-id="{{$c->id}}" data-pjax></div>
+                        @guest
                         @else
-                            <a data-pjax class="a_like" href="/like/{{$c->id}}"><i class="far fa-heart jelikepas"></i></a>
-                        @endif
-                    @endguest
+                            @if(Auth::user()->jeLike->contains($c->id))
+                                <a data-pjax class="a_like" href="/like/{{$c->id}}"><i class="fas fa-heart jelike"></i></a>
+                            @else
+                                <a data-pjax class="a_like" href="/like/{{$c->id}}"><i class="far fa-heart jelikepas"></i></a>
+                            @endif
+                        @endguest
+                        <a  class="a_plus" id="plus{{$c->id}}" href="#" data-id='{{$c->id}}'><i class="fas fa-plus plus"></i></a>
+                    </div>
+                    <div class="chanson chanson-playlist flip-card-back">
+                        <div id ="imgchanson{{$c->id}}" class="imgchanson"></div>
+                        <p>lien1</p>
+                        <p>lien1</p>
+                    </div>
                 </div>
             </div>
         @endforeach
@@ -45,6 +53,14 @@
         $('#lancement').fadeOut(500);
         document.getElementById("titremusique").innerHTML = titre;
         $('.album-image').css('background-image',image)
+    });
+
+    $(".a_plus").click(function () {
+        let id = $(this).attr('data-id');
+        document.getElementById('flip-card-inner'+id).classList.add('flip-card-inner-rot');
+        setTimeout(function(){
+            document.getElementById('flip-card-front'+id).style.display="none";
+            }, 500);
     });
 
 </script>
