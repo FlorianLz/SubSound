@@ -81,7 +81,9 @@ class FirstController extends Controller
 
     public function utilisateur($id){
         $u = User::findOrFail($id);
-        return view("firstcontroller.utilisateur", ['utilisateur' => $u]);
+        $playlists=Playlist::all();
+        $chansons=Chanson::all();
+        return view("firstcontroller.utilisateur", ['utilisateur' => $u,"playlists"=>$playlists,"chansons"=>$chansons]);
     }
 
     public function nouvellechanson(){
@@ -151,6 +153,7 @@ class FirstController extends Controller
 
     public function ajoutplaylist($idplaylist,$idchanson){
         Playlist::findOrFail($idplaylist)->aLaChanson()->toggle($idchanson);
+        $playlist=Playlist::findOrFail($idplaylist);
         return redirect('/infosplaylist/'.$idplaylist);
     }
 }

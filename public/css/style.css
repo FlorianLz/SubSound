@@ -634,7 +634,7 @@ button.bouton_auth:hover{
     position: absolute;
     right:10px;
     margin-top:30px;
-
+    z-index:20;
 }
 #search input[type=search]{
     padding: 5px;
@@ -798,6 +798,7 @@ button.bouton_auth:hover{
 .flip-card-back {
     color: white;
     transform: rotateY(180deg);
+    background-color: black;
 }
 
 a.a_plus{
@@ -811,9 +812,50 @@ a.a_plus{
 a.a_plus > i.plus{
     color:grey;
 }
-
-
-
+a.a_retour{
+    position: absolute;
+    font-size: 2.5rem;
+    left:50%;
+    top:75%;
+    z-index:20;
+    transform: translateX(-50%);
+}
+a.a_retour > i.retour{
+    color:grey;
+}
+.playlist_back{
+    text-align: center;
+    position: relative;
+    color:white;
+}
+.flip-card-back > div > a{
+    text-decoration: none;
+}
+.listeplaylists{
+    position: absolute;
+    left:50%;
+    top:50%;
+    transform: translate(-50%,-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.imgchansonback{
+    filter:brightness(0.2);
+}
+.danslaplaylist{
+    color:green;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    width:max-content;
+}
+.danslaplaylist > i{
+    margin-left:5px;
+}
+.addplaylist{
+    width:max-content;
+}
 
 
 
