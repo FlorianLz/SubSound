@@ -17,6 +17,7 @@
             <input type="text" name="nom" placeholder="Titre de la playlist" value="{{old('nom')}}" class="input_form " required>
             <label for="imgMusiq" class="label-file col"><p>Importer votre image <br>pour votre playlist</p><img class="fit-file" src="/img/upload.png"
                                                                                                                  alt="upload"></label>
+            <input type="hidden" name="idchanson" value="{{$idchanson ?? '0'}}">
             <input type="file" id="imgMusiq" name="imgMusiq" value="{{old('url')}}" class="input_file" required>
             <input type="submit" value="Envoyer" class="bouton_aut">
         </form>

@@ -22,6 +22,7 @@
                     <div class="chanson chanson-playlist flip-card-back">
                         <div id ="imgchanson{{$c->id}}" class="imgchanson imgchansonback"></div>
                         <div class="listeplaylists">
+                            @auth
                             @foreach($playlists as $p)
                                 @if(Auth::user()->playlist->contains($p->id))
                                     @if($p->aLaChanson->contains($c->id))
@@ -35,7 +36,11 @@
                                     @endif
                                 @endif
                             @endforeach
-                            <p class="addplaylist">Ajouter à une nouvelle playlist</p>
+                                <a href="/playlist/nouvelle/{{$c->id}}"><p class="addplaylist">Ajouter à une nouvelle playlist</p></a>
+                            @endauth
+                            @guest
+                                <p>Connectez-vous pour ajouter cette chanson à une playlist.</p>
+                            @endguest
                         </div>
                         <a  class="a_retour" id="retour{{$c->id}}" href="#" data-id='{{$c->id}}'><i class="far fa-arrow-alt-circle-left retour"></i></a>
                     </div>
@@ -75,7 +80,7 @@
         document.getElementById('flip-card-inner'+id).classList.add('flip-card-inner-rot');
         setTimeout(function(){
             document.getElementById('flip-card-front'+id).style.display="none";
-            }, 700);
+            }, 1000);
     });
     $(".a_retour").click(function () {
         let id = $(this).attr('data-id');
@@ -83,7 +88,7 @@
         document.getElementById('flip-card-inner'+id).classList.remove('flip-card-inner-rot');
         setTimeout(function(){
             document.getElementById('flip-card-back'+id).style.display="none";
-        }, 700);
+        }, 1000);
     });
 
 </script>

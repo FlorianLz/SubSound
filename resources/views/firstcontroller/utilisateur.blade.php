@@ -26,7 +26,7 @@
                             <form action="" method="POST" >
                                 <label for="chanson" class="label-file col us"><img class="fit-user" src="{{$utilisateur->url_avatar}}" alt="image utilisateur"></label>
                                 <input type="file" id="chanson" name="chanson" value="{{old('url')}}" class="input_file" required>
-                                <input type="email" placeholder="Votre nouvelle Adresse mail..." class="input_form form">
+                                <input type="email" placeholder="Votre nouvelle Adresse mail..." class="input_form form" value="{{$utilisateur->email}}">
                                 <input type="password" placeholder="Votre nouveau mot de passe..." class="input_form form">
                                 <input type="submit" value="Valider" class="bouton_aut">
                             </form>

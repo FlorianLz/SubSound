@@ -9,6 +9,7 @@
             <link rel="stylesheet" href="/css/style.css">
             <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">    <title>Mon application soundcloud</title>
             <link href="https://fonts.googleapis.com/css?family=Mukta&display=swap" rel="stylesheet">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
         </head>
         <body>
             <header>
@@ -82,14 +83,22 @@
 
                 <div class="vosplaylists">
                     <div><h3>VOS PLAYLISTS</h3><a href="/playlist/nouvelle" data-pjax><i class="fas fa-plus-circle"></i></a></div>
-
-                    @foreach($playlists as $c)
-                        @if(Auth::user()->playlist->contains($c->id))
-                                <a href="{{URL::to('/')}}/infosplaylist/{{$c->id}}" data-pjax>
-                                <p class="playlist"><i class="fas fa-file-audio"></i><span>{{$c->nom}}</span></p>
+                    <div class="list">
+                    @if($playlists ?? '')
+                        @foreach($playlists as $c)
+                            @if(Auth::user()->playlist->sortByDesc('id')->take(3)->contains($c->id))
+                                    <a href="{{URL::to('/')}}/infosplaylist/{{$c->id}}" data-pjax>
+                                    <p class="playlist"><i class="fas fa-file-audio"></i><span>{{$c->nom}}</span></p>
+                                </a>
+                            @endif
+                        @endforeach
+                        </div>
+                        @if(Auth::user()->playlist->count() > 3)
+                            <a href="{{URL::to('/playlist')}}" data-pjax>
+                                <p class="playlist"><i class="fas fa-plus-square"></i><span>Voir plus...</span></p>
                             </a>
                         @endif
-                    @endforeach
+                    @endif
                 </div>
                 @endguest
                 </div>

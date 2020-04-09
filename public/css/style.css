@@ -101,17 +101,17 @@ body{
     font-size:1.3rem;
     color:var(--grisclair);
 }
-.menu > a > p, .menu > div > a > p,.vosplaylists > a > p{
+.menu > a > p, .menu > div > a > p,.vosplaylists > a > p,.list > a > p{
     font-size:1.3rem;
 }
-.menu > a >p.actif, .menu > div > a >p.actif{
+.menu > a >p.actif, .menu > div > a >p.actif,.list > a > p.actif{
     color:var(--principale);
     font-weight: bold;
 }
-.menu > a > p > span, .menu > div > a > p > span, .vosplaylists > a > p > span{
+.menu > a > p > span, .menu > div > a > p > span, .vosplaylists > a > p > span,.list > a > p>span{
     padding-left:10px;
 }
-.menu > a > p > i, .menu > div > a > p > i, .vosplaylists > a > p > i{
+.menu > a > p > i, .menu > div > a > p > i, .vosplaylists > a > p > i,.list > a > p > i{
     width:30px;
     text-align: center;
 }
@@ -123,10 +123,14 @@ body{
 .lienmusique > a:nth-child(2), .vosplaylists > div > a{
     padding-right:50px;
 }
-.vosplaylists > div{
+.vosplaylists > div:nth-child(1){
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+.list{
+    display:flex;
+    flex-direction: column-reverse;
 }
 
 /* Menu côté déconnecté */
@@ -612,20 +616,35 @@ button.bouton_auth:hover{
     width: 250px;
     height: 250px;
     border-radius: 10px;
-    margin-right:30px;
+    margin-right:35px;
+    margin-left:35px;
 }
 .playlistt{
     display:flex;
     flex-wrap: wrap;
     justify-content: center;
+    height:90vh;
+    overflow: auto;
+    padding-bottom:100px;
+    position:fixed;
 }
 .listplaylist{
     margin-bottom:50px;
+}
+.listplaylist > p{
+    text-align: center;
 }
 
 .playlistt a{
     text-decoration:none;
     color:var(--secondaire);
+}
+
+.enviecreation{
+    margin-bottom: 50px;
+    display: flex;
+    align-items: center;
+    text-align: center;
 }
 
 /*form search*/
@@ -735,31 +754,31 @@ button.bouton_auth:hover{
 .audio-player .player-controls progress[value] {
     -webkit-appearance: none;
     appearance: none;
-    background-color: white;
-    color: var(--secondaire);
+    background-color: transparent;
+    color: white;
     height: 10px;
 }
 .audio-player .player-controls progress[value]::-webkit-progress-bar {
-    background-color: white;
+    background-color: lightgray;
     border-radius: 2px;
     border: 1px solid #dfdfdf;
-    color: var(--secondaire);
+    color: white;
 }
 .audio-player .player-controls progress::-webkit-progress-value {
-    background-color: var(--secondaire);
+    background-color: white;
 }
 .audio-player .player-controls p {
     font-size: 1.6rem;
 }
 .audio-player #play-btn {
-    background-image: url("http://www.lukeduncan.me/images/play-button.png");
+    background-image: url("../img/play-button.png");
     background-size: cover;
-    width: 75px;
-    height: 75px;
+    width: 50px;
+    height: 50px;
     margin-left:15px;
 }
 .audio-player #play-btn.pause {
-    background-image: url("http://www.lukeduncan.me/images/pause-button.png");
+    background-image: url("../img/pause-button.png");
 }
 
 /* Flip card ajout playlist */
@@ -830,6 +849,7 @@ a.a_retour > i.retour{
 }
 .flip-card-back > div > a{
     text-decoration: none;
+    color:white;
 }
 .listeplaylists{
     position: absolute;
@@ -839,6 +859,8 @@ a.a_retour > i.retour{
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: 54%;
+    overflow: auto;
 }
 .imgchansonback{
     filter:brightness(0.2);
@@ -859,8 +881,12 @@ a.a_retour > i.retour{
 
 
 
-
-
+/* Responsive */
+@media screen and (max-width:800px){
+    .menucote{
+        display: none;
+    }
+}
 
 
 

@@ -64,7 +64,8 @@ class FirstController extends Controller
     }
 
     public function nouvelleplaylist(){
-        return view("firstcontroller.addPlaylist", ["active" => "playlist"]);
+        $playlists=Playlist::all();  //SELECT * FROM playlist
+        return view("firstcontroller.addPlaylist", ["active" => "playlist","playlists"=>$playlists]);
     }
 
     public function article($id){
@@ -134,6 +135,7 @@ class FirstController extends Controller
 
         $name= $request->file('imgMusiq')->hashName();
         $request->file('imgMusiq')->move("uploads/".Auth::id(), $name);
+        $idchanson= $request->input('idchanson');
 
 
         $c = new Playlist();
@@ -141,7 +143,14 @@ class FirstController extends Controller
         $c-> url_image = "/uploads/".Auth::id()."/".$name;
         $c-> user_id = Auth::id();
         $c->save();
-        return redirect("/");
+
+        if($idchanson >  0){
+            $idplaylist = Playlist::all()->last()->id;
+            $this->ajoutplaylist($idplaylist,$idchanson);
+            return redirect('/infosplaylist/'.$idplaylist);
+        }else{
+            return redirect("/");
+        }
     }
 
     public function recherche($s) {
@@ -155,5 +164,17 @@ class FirstController extends Controller
         Playlist::findOrFail($idplaylist)->aLaChanson()->toggle($idchanson);
         $playlist=Playlist::findOrFail($idplaylist);
         return redirect('/infosplaylist/'.$idplaylist);
+    }
+
+    public function newplaylistandadd($id){
+        $playlists=Playlist::all();
+        return view("firstcontroller.addPlaylist", ["active" => "playlist", "idchanson"=>$id,"playlists"=>$playlists]);
+    }
+
+    public function erreur() {
+        $playlists=Playlist::all();
+        $user=User::findOrFail(Auth::id());
+        return view('errors.404', ["utilisateur"=>$user,"playlists"=>$playlists]);
+
     }
 }
