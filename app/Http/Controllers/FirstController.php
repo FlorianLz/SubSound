@@ -57,6 +57,13 @@ class FirstController extends Controller
         return view("firstcontroller.favoris", ["chansons"=>$chansons,"active" => "favoris","utilisateur"=>$user,"playlists"=>$playlists]);
     }
 
+    public function musiques(){
+        $chansons=Chanson::all(); //SELECT * FROM chansons
+        $playlists=Playlist::all(); //SELECT * FROM playlist
+        $user=User::findOrFail(Auth::id());
+        return view("firstcontroller.musiques", ["chansons"=>$chansons,"active" => "favoris","utilisateur"=>$user,"playlists"=>$playlists]);
+    }
+
     public function playlist(){
         $playlists=Playlist::all();  //SELECT * FROM playlist
         $user=User::findOrFail(Auth::id());
@@ -84,7 +91,8 @@ class FirstController extends Controller
         $u = User::findOrFail($id);
         $playlists=Playlist::all();
         $chansons=Chanson::all();
-        return view("firstcontroller.utilisateur", ['utilisateur' => $u,"playlists"=>$playlists,"chansons"=>$chansons]);
+        $user=User::findOrFail(Auth::id());
+        return view("firstcontroller.utilisateur", ['utilisateurr' => $u,"playlists"=>$playlists,"chansons"=>$chansons,"utilisateur"=>$user]);
     }
 
     public function nouvellechanson(){
@@ -114,7 +122,8 @@ class FirstController extends Controller
         $c-> user_id = Auth::id();
         $c->save(); //INSERT INTO chansons VALUES (NULL,...)
         //return redirect("/utilisateur/".Auth::id());
-        return redirect("/");
+        return back();
+
     }
 
     public function suivre($id){
@@ -169,6 +178,47 @@ class FirstController extends Controller
     public function newplaylistandadd($id){
         $playlists=Playlist::all();
         return view("firstcontroller.addPlaylist", ["active" => "playlist", "idchanson"=>$id,"playlists"=>$playlists]);
+    }
+    public function supprimerchanson($idchanson){
+        $chanson = Chanson::findOrFail($idchanson);
+        if ($chanson->user_id == Auth::id()){
+            $chanson->delete();
+
+            $chansons=Chanson::all(); //SELECT * FROM chansons
+            $playlists=Playlist::all(); //SELECT * FROM playlist
+            $user=User::findOrFail(Auth::id());
+            return view("firstcontroller.musiques", ["chansons"=>$chansons,"active" => "favoris","utilisateur"=>$user,"playlists"=>$playlists]);
+        }else{
+            $chansons=Chanson::all(); //SELECT * FROM chansons
+            $playlists=Playlist::all(); //SELECT * FROM playlist
+            $user=User::findOrFail(Auth::id());
+            return view("firstcontroller.musiques", ["chansons"=>$chansons,"active" => "favoris","utilisateur"=>$user,"playlists"=>$playlists]);
+        }
+    }
+
+    public function updateutilisateur(Request $request){
+        $request->validate([
+            'email' => 'required|min:3|max:255',
+            'password' => 'required|min:3|max:255',
+        ]);
+
+        if($request->file('avatar')){
+            $name= $request->file('avatar')->hashName();
+            $request->file('avatar')->move("uploads/".Auth::id(), $name);
+        }
+
+
+        Auth::user()->email=$request->input('email');
+        Auth::user()->password=bcrypt($request->input('password'));
+        if($request->file('avatar')){
+            Auth::user()->url_avatar="/uploads/".Auth::id()."/".$name;
+        }
+        Auth::user()->save();
+
+        return back();
+    }
+    public function elleEstLikee(){
+        return $this->belongsToMany("App\Chanson", "like", "chanson_id", "user_id");
     }
 
     public function erreur() {

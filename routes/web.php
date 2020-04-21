@@ -19,9 +19,11 @@ Route::get('/connexion', 'FirstController@connexion');
 
 Route::get('/inscription', 'FirstController@inscription');
 
-Route::get('/favoris', 'FirstController@favoris');
+Route::get('/favoris', 'FirstController@favoris')->middleware('auth');
 
-Route::get('/playlist', 'FirstController@playlist');
+Route::get('/musiques', 'FirstController@musiques')->middleware('auth');
+
+Route::get('/playlist', 'FirstController@playlist')->middleware('auth');
 
 Route::get('/article/{id}', 'FirstController@article')->where ('id', '[0-9]+');
 
@@ -33,7 +35,9 @@ Route::get('/playlist/nouvelle', 'FirstController@nouvelleplaylist')->middleware
 
 Route::get('/playlist/nouvelle/{idchanson}', 'FirstController@newplaylistandadd')->where ('idchanson', '[0-9]+')->middleware('auth');
 
-Route::get('/playlist/update/{idplaylist}/{idchanson}', 'FirstController@ajoutplaylist')->where ('id', '[0-9]+')->middleware('auth');
+Route::get('/playlist/update/{idplaylist}/{idchanson}', 'FirstController@ajoutplaylist')->where ('idchanson', '[0-9]+')->middleware('auth');
+
+Route::get('/suppr/{idchanson}', 'FirstController@supprimerchanson')->where ('idchanson', '[0-9]+')->middleware('auth');
 
 Route::get('/infosplaylist/{id}', 'FirstController@infosplaylist')->where ('id', '[0-9]+')->middleware('auth');
 
@@ -43,11 +47,13 @@ Route::get('/like/{id}', 'FirstController@like')->where ('id', '[0-9]+')->middle
 
 Route::get('/recherche/{s}','FirstController@recherche');
 
-Route::post('/chanson/create', 'FirstController@creerchanson');
+Route::post('/chanson/create', 'FirstController@creerchanson')->middleware('auth');
 
-Route::post('/playlist/create', 'FirstController@creerplaylist');
+Route::post('/playlist/create', 'FirstController@creerplaylist')->middleware('auth');
 
 Route::post('/', 'FirstController@index');
+
+Route::post('/utilisateur/update/{id}','FirstController@updateutilisateur')->where ('id', '[0-9]+')->middleware('auth');
 
 Auth::routes();
 

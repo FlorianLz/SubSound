@@ -3,6 +3,10 @@ $(document).on('submit', 'form[data-pjax]', function(event) {
     $.pjax.submit(event, '#pjax-container')
 });
 
+$(document).on('submit', 'form[data-pjax]', function(event) {
+    $.pjax.submit(event, '#pjax-container')
+})
+
 function changeractif(id){
     let accueil=document.getElementById('accueil');
     let musique=document.getElementById('musique');

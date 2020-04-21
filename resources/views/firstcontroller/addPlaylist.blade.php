@@ -12,7 +12,7 @@
                 </ul>
             </div>
         @endif
-        <form action="/playlist/create" method="POST" enctype="multipart/form-data" data-pjax>
+        <form action="/playlist/create" method="POST" enctype="multipart/form-data">
             @csrf
             <input type="text" name="nom" placeholder="Titre de la playlist" value="{{old('nom')}}" class="input_form " required>
             <label for="imgMusiq" class="label-file col"><p>Importer votre image <br>pour votre playlist</p><img class="fit-file" src="/img/upload.png"

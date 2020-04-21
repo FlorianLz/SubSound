@@ -102,6 +102,7 @@
                 </div>
                 @endguest
                 </div>
+            </div>
 
             <div id="main">
                 <form id="search" data-pjax>

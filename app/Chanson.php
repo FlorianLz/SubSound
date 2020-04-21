@@ -23,6 +23,6 @@ class Chanson extends Model
     }
 
     public function elleEstLikee(){
-        return $this->belongsToMany("App\Chanson", "like", "chanson_id", "user_id");
+        return $this->belongsToMany("App\Chanson", "like");
     }
 }
