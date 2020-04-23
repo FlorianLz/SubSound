@@ -27,6 +27,7 @@ body{
     height:100vh;
     width:100vw;
     display:flex;
+    font-size:62.5%;
 }
 #main{
     width:80%;
@@ -228,6 +229,12 @@ h4.titrechanson{
     top:50%;
     left:50%;
     transform: translate(-50%,-50%);
+}
+.autoplay{
+    padding-left:0.7rem;
+}
+.autoplayactif{
+    color:black;
 }
 
 a.a_like > i.jelike{
@@ -742,6 +749,7 @@ button.bouton_auth:hover{
     min-height: 100px;
     width: 110px;
     background-size: cover;
+    background-position:center;
 }
 .audio-player .player-controls {
     align-items: center;
@@ -818,6 +826,7 @@ button.bouton_auth:hover{
     color: white;
     transform: rotateY(180deg);
     background-color: black;
+    z-index:100;
 }
 
 a.a_plus{
@@ -878,15 +887,269 @@ a.a_retour > i.retour{
 .addplaylist{
     width:max-content;
 }
-
-
+.menu2{
+    display: none;
+}
+.visible{
+    display:block!important;
+}
 
 /* Responsive */
 @media screen and (max-width:800px){
+    body{
+        flex-direction:column;
+    }
+    #main{
+        width:100%;
+        display:flex;
+        flex-direction: column;
+    }
+    #pjax-container{
+        height:70vh;
+        padding:0;
+    }
+    #search{
+        width:90%;
+        margin:0.7rem auto;
+        position: relative;
+        right:0;
+    }
+    #search input[type="search"]{
+        width: 60%;
+    }
+    #search input[type="submit"]{
+        width: 40%;
+    }
+    .infos_user{
+        flex-direction: column;
+        align-items: center;
+        padding-left: 0px;
+    }
+    .infos{
+        padding-left: 0px;
+    }
+    .menu{
+        padding-left: 10px;
+    }
+    .fit-play{
+        margin-left: 0px;
+    }
+    .photo_user{
+        width: 2rem;
+        height: 2rem;
+    }
+    .favrep{
+        display: none;
+    }
+    .listfavor{
+        justify-content: space-around;
+        margin-bottom: 40px;
+    }
+    .error404 img{
+        height: 300px;
+    }
     .menucote{
         display: none;
     }
+    .menu2{
+        display: flex;
+        justify-content: space-evenly;
+        padding:1rem 0;
+        background-color:var(--principale);
+    }
+    .menu2 > a > i{
+        text-decoration:none;
+        color:white;
+        font-size:2rem;
+    }
+    .div_chansons{
+        padding:0;
+        height:73vh;
+    }
+    .chansons{
+        height:94%;
+    }
+    .flip-card{
+        margin:0 0 2rem 0;
+        width:65vw;
+        height:65vw;
+    }
+    .flip-card:last-child{
+        margin:0 0 8rem 0;
+    }
+    .div_chansons > .titre{
+        display:none;
+    }
+    .playlist_back,.titrechanson,.lancement > h2{
+        font-size:1.5rem;
+    }
+    .addplaylist{
+        font-size:1rem;
+    }
+    .lancement > h2{
+        font-size:1.1rem;
+    }
+    .album-image{
+        display:none;
+    }
+
+    /* Playlists */
+    .playlistt{
+        width:100vw;
+        flex-wrap:nowrap;
+        align-items: center;
+        overflow: hidden;
+        height:85%;
+        justify-content: center;
+        padding: 0;
+    }
+    .listplaylist{
+        width:max-content;
+        margin-bottom:0.4rem;
+    }
+    .listplaylist > p{
+        font-size:1.2rem;
+    }
+    .playlistt > a{
+        width:max-content;
+    }
+    .fit-play{
+        width:65vw;
+        height:65vw;
+        margin-right: 0;
+    }
+    .interrogation{
+        background-color: var(--secondaire);
+        border-radius:1rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .interrogation > img{
+        padding:1rem;
+    }
+    .titre{
+        text-align: center;
+        font-size:1.1rem;
+        padding:0;
+    }
+    /* carousel */
+    .item {
+        margin: 10px;
+        background-color: #fff;
+        box-shadow: 0 15px 35px #3232321a,0 5px 15px #0000001a;
+        transition: transform .3s;
+        transform: translate3d(0,-1px,0)
+    }
+
+    .item:hover {
+        transform: translate3d(0,-10px,0)
+    }
+
+    .item img {
+        display: block;
+        width: 100%;
+        height: auto
+    }
+
+    .item__body {
+        padding: 25px
+    }
+
+    .item__title {
+        font-size: 24px;
+        margin-bottom: 5px;
+        font-weight: 700;
+        color: #232323
+    }
+
+    .item__description {
+        color: #585858
+    }
+
+    .carousel,.items {
+        position: relative;
+    }
+
+    .carousel__container {
+        transition: transform .3s;
+        transform: translateZ(0);
+    }
+
+    .carousel__container:after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+
+    .carousel__item {
+        float: left;
+    }
+    .carousel__item > div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .carousel__next,.carousel__prev {
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        background: var(--principale) url('../img/fleche.png') 50% no-repeat;
+        background-size: 20px 20px;
+        border-radius: 50%;
+        top: 50%;
+        margin-top: -20px;
+        right: 0.3rem;
+        box-shadow: 0 15px 35px #3232321a,0 5px 15px #0000001a;
+        cursor: pointer;
+        transition: transform .3s,opacity .3s;
+    }
+
+    .carousel__next:hover,.carousel__prev:hover {
+        transform: scale(1.1);
+    }
+
+    .carousel__prev {
+        background-image: url('../img/fleche_gauche.png');
+        right: auto;
+        left: 0.3rem;
+    }
+
+    .carousel__next--hidden,.carousel__prev--hidden {
+        opacity: 0;
+    }
+
+    .carousel__pagination {
+        position: absolute;
+        bottom: -20px;
+        left: 0;
+        right: 0;
+        text-align: center;
+        display: none;
+    }
+
+    .carousel__pagination__button {
+        background-color: var(--principale);
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        display: inline-block;
+        margin: 0 3px;
+        box-shadow: 0 2px 5px #3232321a;
+        transition: transform .3s;
+        cursor: pointer;
+    }
+
+    .carousel__pagination__button--active,.carousel__pagination__button:hover {
+        transform: scale(1.4)
+    }
+    .carousel__pagination {
+        display:block;
+    }
 }
+
+
+
 
 
 

@@ -103,6 +103,19 @@
                 @endguest
                 </div>
             </div>
+            <div class="menu2">
+                <a href="/" data-pjax><i class="fas fa-home"></i></a>
+                @auth
+                    <a href="/utilisateur/{{Auth::id()}}" data-pjax><div class="photo_user" style="background-image: url('{{$utilisateur->url_avatar ?? ''}}')"></div></a>
+                    <a href="/musiques" data-pjax><i class="fas fa-music"></i></a>
+                    <a href="/playlist" data-pjax><i class="fas fa-file-audio"></i></a>
+                    <a href="/favoris" data-pjax><i class="fas fa-star"></i></a>
+                @endauth
+                @guest
+                    <a href="connexion" data-pjax><i class="fas fa-user-plus"></i></a>
+            </div>
+            @endguest
+            </div>
 
             <div id="main">
                 <form id="search" data-pjax>
@@ -117,6 +130,7 @@
             <div class="audio-player" id="audio-player">
                 <div id="lancement" class="lancement"><h2>Bienvenue sur SubSound !!!</h2></div>
                 <div id="play-btn" data-id="0"></div>
+                <i class="fas fa-reply-all autoplay"></i>
                 <div class="audio-wrapper" id="player-container">
                     <audio id="player" ontimeupdate="initProgressBar()">
                         <source src="http://www.lukeduncan.me/oslo.mp3" type="audio/mp3">
@@ -138,6 +152,7 @@
             <script src="/js/jquery.js"></script>
             <script src="/js/jquery.pjax.js"></script>
             <script src="/js/divers.js"></script>
+            <script src="/js/carousel.js"></script>
         </body>
     </html>
     @endif

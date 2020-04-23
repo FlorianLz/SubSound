@@ -54,6 +54,7 @@
     $(".boutonplay").click(function () {
         $('.imgchanson').removeClass('encours').removeClass('rotate');
         $('.infoschanson').removeClass('encours').removeClass('rotate');
+        $('.album-image').addClass('visible');
         let url = $(this).attr('data-file');
         let titre = $(this).attr('data-titre');
         let id = $(this).attr('data-id');

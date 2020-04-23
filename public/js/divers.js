@@ -90,7 +90,18 @@ function initProgressBar() {
     progressbar.addEventListener("click", seek);
 
     if (player.currentTime === player.duration) {
-        $('#play-btn').removeClass('pause');
+        if($('#player').attr('autoplay') === 'autoplay'){
+            console.log('auto');
+            player.currentTime = 0;
+            progressbar.value = 0;
+            player.play();
+        }else{
+            player.pause();
+            isPlaying = false;
+            $('#play-btn').removeClass('pause').attr('data-status','pause');
+            $('.encours').removeClass('rotate lecture');
+        }
+
     }
 
     function seek(evt) {
@@ -141,5 +152,13 @@ function initPlayers(num) {
         }());
     }
 }
+$('.autoplay').click(function () {
+    if($('#player').attr('autoplay')){
+        $('#player').removeAttr('autoplay');
+    }else{
+        $('#player').attr('autoplay', 'autoplay')
+    }
+    $(this).toggleClass('autoplayactif');
+});
 
 initPlayers(jQuery('#player-container').length);
