@@ -4,7 +4,7 @@
             <div class="titre"><h2>Mes playlists</h2></div>
             <form></form>
         </div>
-        <div class="playlistt carousel">
+        <div id="car" class="playlistt">
             @foreach($playlists as $c)
                 @if(Auth::user()->playlist->contains($c->id))
                     <div><a href="infosplaylist/{{$c->id}}" data-pjax>
@@ -23,6 +23,9 @@
                 </a></div>
         </div>
     <script>
+        if(document.body.clientWidth < 800){
+            document.getElementById('car').classList.add('carousel');
+        }
         require = function(r, e, n) {
             function t(n, o) {
                 function i(r) {

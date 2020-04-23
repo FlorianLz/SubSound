@@ -2,7 +2,7 @@
 @section('contenu')
     <div id="formconnexion" class="container formconnexion">
         <div class="titre"><h2>Créer une playlist</h2></div>
-        <h3 class="col">Vous souhaitez créer des categorie de musiques ? Pas de <br>soucis ! Pour cela, vous avez juste à remplir ce formulaire</h3>
+        <h3 class="col">Vous souhaitez créer des categorie de musiques ? Pas de soucis ! Pour cela, vous avez juste à remplir ce formulaire</h3>
         @if ($errors->any())
             <div class="alert alert-danger">
                 <ul>

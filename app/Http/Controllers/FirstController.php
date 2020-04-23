@@ -72,7 +72,8 @@ class FirstController extends Controller
 
     public function nouvelleplaylist(){
         $playlists=Playlist::all();  //SELECT * FROM playlist
-        return view("firstcontroller.addPlaylist", ["active" => "playlist","playlists"=>$playlists]);
+        $user=User::findOrFail(Auth::id());
+        return view("firstcontroller.addPlaylist", ["active" => "playlist","playlists"=>$playlists,"utilisateur"=>$user]);
     }
 
     public function article($id){
@@ -96,7 +97,9 @@ class FirstController extends Controller
     }
 
     public function nouvellechanson(){
-        return view("firstcontroller.nouvelle");
+        $playlists=Playlist::all();
+        $user=User::findOrFail(Auth::id());
+        return view("firstcontroller.nouvelle",["playlists"=>$playlists,"utilisateur"=>$user]);
     }
 
     public function creerchanson(Request $request){
@@ -166,7 +169,8 @@ class FirstController extends Controller
         $users = User::WhereRaw("name LIKE CONCAT('%',?, '%')" ,[$s])->get();
         $chansons = Chanson::WhereRaw("nom LIKE CONCAT('%',?, '%')" ,[$s])->get();
         $playlists=Playlist::all();
-        return view("firstcontroller.recherche", ['utilisateurs' =>$users , 'chansons'=>$chansons,'playlists'=>$playlists]);
+        $user=User::findOrFail(Auth::id());
+        return view("firstcontroller.recherche", ['utilisateurs' =>$users , 'chansons'=>$chansons,'playlists'=>$playlists, "utilisateur"=>$user]);
     }
 
     public function ajoutplaylist($idplaylist,$idchanson){

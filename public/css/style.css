@@ -20,6 +20,7 @@ html {
     padding:0;
     box-sizing: border-box;
     font-family: 'Mukta', sans-serif;
+    font-size:62.5%;
 }
 
 body{
@@ -27,7 +28,6 @@ body{
     height:100vh;
     width:100vw;
     display:flex;
-    font-size:62.5%;
 }
 #main{
     width:80%;
@@ -35,10 +35,10 @@ body{
 #pjax-container{
     height:100%;
     overflow: auto;
-    padding-top:30px;
-    padding-left:50px;
-    padding-right:50px;
-    padding-bottom:100px;
+    padding-top:3rem;
+    padding-left:5rem;
+    padding-right:5rem;
+    padding-bottom:10rem;
 }
 /* Menu côté connecté */
 .menucote{
@@ -64,29 +64,29 @@ body{
 
 .infos_user{
     display:flex;
-    padding-left:30px;
+    padding-left:3rem;
 }
 .photo_user{
-    width:60px;
-    height:60px;
+    width:7rem;
+    height:7rem;
     background-color:var(--principale);
-    border-radius:60px;
+    border-radius:6rem;
     background-size:cover;
 }
 .infos{
-    padding-left: 30px;
+    padding-left: 3rem;
 }
 .infos > p{
-    font-size:1.2rem;
+    font-size:2.5rem;
     font-weight: bold;
     width:min-content;
 }
 .infos > a > p{
-    font-size:0.8rem;
-    border:1px solid grey;
-    border-radius:5px;
+    font-size:1.6rem;
+    border:0.1rem solid grey;
+    border-radius:0.5rem;
     text-align: center;
-    padding:0px 10px;
+    padding:0 1rem;
 }
 .infos > a > p:hover{
     background-color: var(--principale);
@@ -94,26 +94,25 @@ body{
 }
 
 .menu, .vosplaylists{
-    padding-top:40px;
-    padding-left:30px;
-    line-height: 2.6;
+    padding-top:4rem;
+    padding-left:3rem;
 }
 .menu > h3, .vosplaylists > div > h3{
-    font-size:1.3rem;
+    font-size:2rem;
     color:var(--grisclair);
 }
 .menu > a > p, .menu > div > a > p,.vosplaylists > a > p,.list > a > p{
-    font-size:1.3rem;
+    font-size:2.8rem;
 }
 .menu > a >p.actif, .menu > div > a >p.actif,.list > a > p.actif{
     color:var(--principale);
     font-weight: bold;
 }
 .menu > a > p > span, .menu > div > a > p > span, .vosplaylists > a > p > span,.list > a > p>span{
-    padding-left:10px;
+    padding-left:1rem;
 }
 .menu > a > p > i, .menu > div > a > p > i, .vosplaylists > a > p > i,.list > a > p > i{
-    width:30px;
+    width:3rem;
     text-align: center;
 }
 .lienmusique{
@@ -122,7 +121,8 @@ body{
     justify-content: space-between;
 }
 .lienmusique > a:nth-child(2), .vosplaylists > div > a{
-    padding-right:50px;
+    padding-right:5rem;
+    font-size:2.8rem;
 }
 .vosplaylists > div:nth-child(1){
     display: flex;
@@ -138,7 +138,7 @@ body{
 h3.msg_auth{
     color:var(--principale);
     text-align: center;
-    padding-top:30px;
+    padding-top:3rem;
 }
 .boutons_auth{
     display: flex;
@@ -147,8 +147,8 @@ h3.msg_auth{
 }
 a.bouton_auth{
     width:70%;
-    border:5px solid var(--principale);
-    border-radius:20px;
+    border:0.5rem solid var(--principale);
+    border-radius:2rem;
     color:var(--principale);
     text-align: center;
 }
@@ -157,15 +157,16 @@ a.bouton_auth:hover{
     background-color: var(--principale);
 }
 .bouton_auth:nth-child(1){
-    margin-bottom:50px;
-    margin-top:20px;
+    margin-bottom:5rem;
+    margin-top:2rem;
 }
 
 /* Page d'accueil */
 .titre{
     color:var(--secondaire);
-    padding-bottom:15px;
+    padding-bottom:1.5rem;
     text-align: left;
+    font-size:4.1rem;
 }
 .chansons{
     display:flex;
@@ -174,19 +175,19 @@ a.bouton_auth:hover{
     overflow: auto;
     align-items: center;
     justify-content: space-evenly;
-    padding-bottom:100px;
+    padding-bottom:10rem;
 }
 .div_chansons{
     height:90vh;
     position:fixed;
     overflow: hidden;
-    padding-right:50px;
+    padding-right:5rem;
 }
 .chanson{
     width:20%;
     height:20%;
-    border-radius: 200px;
-    margin-bottom:20px;
+    border-radius: 20rem;
+    margin-bottom:2rem;
     overflow: hidden;
     position: relative;
 }
@@ -209,6 +210,7 @@ h4.titrechanson{
     text-align: center;
     z-index:20;
     opacity: 1;
+    font-size:2.1rem;
 }
 .imgchanson{
     position:absolute;
@@ -239,9 +241,11 @@ h4.titrechanson{
 
 a.a_like > i.jelike{
     color:red;
+    font-size:4rem;
 }
 a.a_like > i.jelikepas{
     color:grey;
+    font-size:4rem;
 }
 a.a_like{
     position: absolute;
@@ -275,7 +279,7 @@ a.a_like > i{
 .formconnexion > form{
     height:min-content;
     min-height:50%;
-    padding-top:40px;
+    padding-top:4rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -283,43 +287,43 @@ a.a_like > i{
 .formconnexion > h3{
     text-align: center;
     font-size:1.8rem;
-    padding-top:60px;
+    padding-top:6rem;
 }
 .input_form{
     width:60%;
     height:16%;
-    border:4px solid var(--principale);
+    border:0.4rem solid var(--principale);
     font-size:2rem;
-    margin-bottom:40px;
-    border-radius: 10px;
-    padding:10px;
+    margin-bottom:4rem;
+    border-radius: 1rem;
+    padding:1rem;
 }
 .input_form_password{
     width:30%;
     height:50%;
-    border:4px solid var(--principale);
+    border:0.4rem solid var(--principale);
     font-size:2rem;
-    margin-bottom:40px;
-    border-radius: 10px;
-    padding:10px;
+    margin-bottom:4rem;
+    border-radius: 1rem;
+    padding:1rem;
 }
 .remember{
     width:50%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-left:10px;
+    padding-left:1rem;
 }
 button.bouton_auth{
     width:50%;
-    border:5px solid var(--principale);
-    border-radius:60px;
+    border:0.5rem solid var(--principale);
+    border-radius:6rem;
     color:var(--principale);
     text-align: center;
     background-color: white;
     height:15%;
     font-size:1.8rem;
-    margin-top:40px;
+    margin-top:4rem;
 }
 button.bouton_auth:hover{
     color:white;
@@ -331,7 +335,7 @@ button.bouton_auth:hover{
 }
 .erreurlogin{
     color:red;
-    padding-bottom:20px;
+    padding-bottom:2rem;
 }
 .versinscription{
     text-decoration: none;
@@ -344,10 +348,10 @@ button.bouton_auth:hover{
 /* The container */
 .my_checkbox {
     position: relative;
-    padding-left: 35px;
-    margin-bottom: 12px;
+    padding-left: 3.5rem;
+    margin-bottom: 1.2rem;
     cursor: pointer;
-    font-size: 22px;
+    font-size: 2.2rem;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -369,10 +373,10 @@ button.bouton_auth:hover{
     top: 50%;
     left: 0;
     transform: translateY(-50%);
-    height: 25px;
-    width: 25px;
+    height: 2.5rem;
+    width: 2.5rem;
     background-color: #eee;
-    border:1px solid var(--grisclair);
+    border:0.1rem solid var(--grisclair);
 }
 
 /* On mouse-over, add a grey background color */
@@ -399,12 +403,12 @@ button.bouton_auth:hover{
 
 /* Style the checkmark/indicator */
 .my_checkbox .checkmark:after {
-    left: 9px;
-    top: 5px;
-    width: 5px;
-    height: 10px;
+    left: 0.9rem;
+    top: 0.5rem;
+    width: 0.5rem;
+    height: 1rem;
     border: solid white;
-    border-width: 0 3px 3px 0;
+    border-width: 0 0.3rem 0.3rem 0;
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
@@ -418,28 +422,28 @@ button.bouton_auth:hover{
 
 .formconnexion .bouton_aut{
     width: 50%;
-    border: 5px solid var(--principale);
-    border-radius: 60px;
+    border: 0.5rem solid var(--principale);
+    border-radius: 6rem;
     color: var(--principale);
     text-align: center;
     background-color: white;
     height: 15%;
     font-size: 1.8rem;
-    margin-top: 40px;
+    margin-top: 4rem;
 }
 .input_file{
     display: none;
 }
 
 .label-file{
-    font-size:24px;
+    font-size:2.4rem;
     display: flex;
     align-items: center;
     cursor: pointer;
 }
 
 .fit-file {
-    margin-left: 100px;
+    margin-left: 10rem;
 }
 
 /* Favoris */
@@ -447,8 +451,8 @@ button.bouton_auth:hover{
 .listfavor{
     display: flex;
     align-items: center;
-    margin-bottom:15px;
-    border-radius:7px;
+    margin-bottom:1.5rem;
+    border-radius:0.7rem;
 }
 .btnsuppr{
     text-decoration: none;
@@ -480,13 +484,14 @@ button.bouton_auth:hover{
 .listfavor span:nth-child(5) > a{
     text-decoration: none;
     color:var(--grisclair);
+    font-size:1.8rem;
 }
 .listfavor span:nth-child(5) > a:hover{
     color:var(--principale);
 }
 .listfavor span{
     color:var(--grisclair);
-    font-size: 18px;
+    font-size: 1.8rem;
 }
 .titrefav{
     color:var(--secondaire) !important;
@@ -497,7 +502,7 @@ button.bouton_auth:hover{
     position:absolute;
     font-size:2rem;
     color:#e2e2e2;
-    left:15px;
+    left:1.5rem;
     z-index: 100;
 }
 .titrefav:hover > .boutonlecture{
@@ -505,34 +510,34 @@ button.bouton_auth:hover{
     position:absolute;
     font-size:2rem;
     color:#e2e2e2;
-    left:15px;
+    left:1.5rem;
     z-index: 100;
 }
 .titrefav:hover > .fit-picture{
     filter:brightness(70%);
 }
 .esp{
-    margin-right:5px;
+    margin-right:0.5rem;
 }
 .fit-picture{
-    width:60px;
-    height:60px;
-    margin-right:10px;
-    border-radius:7px;
+    width:6rem;
+    height:6rem;
+    margin-right:1rem;
+    border-radius:0.7rem;
 }
 
 /* page utilisateur */
 
 .user{
-    margin-top:50px;
+    margin-top:5rem;
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
 .fit-user{
-    border-radius:100px;
-    width:200px;
-    height:200px;
+    border-radius:10rem;
+    width:20rem;
+    height:20rem;
     -webkit-filter: grayscale(0);
     filter: grayscale(0);
     -webkit-transition: .3s ease-in-out;
@@ -557,7 +562,7 @@ button.bouton_auth:hover{
     color:var(--secondaire);
 }
 .us{
-    margin-bottom:20px;
+    margin-bottom:2rem;
 }
 .form{
     width: 100% !important;
@@ -565,8 +570,8 @@ button.bouton_auth:hover{
 
 .bouton_aut{
     width: 50%;
-    border: 5px solid var(--principale);
-    border-radius: 60px;
+    border: 0.5rem solid var(--principale);
+    border-radius: 6rem;
     color: var(--principale);
     text-align: center;
     background-color: white;
@@ -576,15 +581,15 @@ button.bouton_auth:hover{
 
 .user div ul li{
     list-style-type:none;
-    font-size:24px;
+    font-size:2.4rem;
 }
 .info{
     text-align: center;
 }
 .info h3{
-    font-size: 48px;
+    font-size: 4.8rem;
     color:var(--secondaire);
-    margin-bottom:100px;
+    margin-bottom:10rem;
 }
 
 .imp{
@@ -592,19 +597,19 @@ button.bouton_auth:hover{
     justify-content: space-around;
 }
 .lf{
-    margin-left:50px;
+    margin-left:5rem;
 }
 .suivre{
     text-decoration: none;
     color: var(--secondaire);
-    margin-top:20px;
-    font-size: 20px;
+    margin-top:2rem;
+    font-size: 2rem;
 }
 .suivre:hover{
     color: var(--principale);
 }
 .noUser{
-    margin-top:50px;
+    margin-top:5rem;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -620,11 +625,11 @@ button.bouton_auth:hover{
 
 /* Page playlists */
 .fit-play{
-    width: 250px;
-    height: 250px;
-    border-radius: 10px;
-    margin-right:35px;
-    margin-left:35px;
+    width: 25rem;
+    height: 25rem;
+    border-radius: 1rem;
+    margin-right:3.5rem;
+    margin-left:3.5rem;
 }
 .playlistt{
     display:flex;
@@ -632,14 +637,15 @@ button.bouton_auth:hover{
     justify-content: center;
     height:90vh;
     overflow: auto;
-    padding-bottom:100px;
+    padding-bottom:10rem;
     position:fixed;
 }
 .listplaylist{
-    margin-bottom:50px;
+    margin-bottom:5rem;
 }
 .listplaylist > p{
     text-align: center;
+    font-size:1.8rem;
 }
 
 .playlistt a{
@@ -648,7 +654,7 @@ button.bouton_auth:hover{
 }
 
 .enviecreation{
-    margin-bottom: 50px;
+    margin-bottom: 5rem;
     display: flex;
     align-items: center;
     text-align: center;
@@ -658,13 +664,13 @@ button.bouton_auth:hover{
 
 #search{
     position: absolute;
-    right:10px;
-    margin-top:30px;
+    right:1rem;
+    margin-top:3rem;
     z-index:20;
 }
 #search input[type=search]{
-    padding: 5px;
-    font-size: 17px;
+    padding: 0.5rem;
+    font-size: 1.7rem;
     float: left;
     width: 80%;
     background: #f1f1f1;
@@ -674,20 +680,13 @@ button.bouton_auth:hover{
 #search input[type=submit]{
     float: left;
     width: 20%;
-    padding: 5px;
+    padding: 0.5rem;
     background: var(--principale);
     color: white;
-    font-size: 17px;
+    font-size: 1.7rem;
     border:none;
     cursor: pointer;
 }
-
-/* recherche */
-
-.rsize{
-    font-size:20px;
-}
-
 
 /* page 404 */
 
@@ -698,19 +697,19 @@ button.bouton_auth:hover{
     height:100%;
 }
 .error404 img {
-    height:600px;
+    height:60rem;
 }
 
 /* Player audio */
 .audio-player {
-    border: 1px solid #dfdfdf;
+    border: 0.1rem solid #dfdfdf;
     text-align: center;
     display: flex;
     align-items: center;
     flex-flow: row;
     position:fixed;
     bottom:0;
-    height:100px;
+    height:10rem;
     background-color: var(--principale);
     width:100vw;
     z-index:100;
@@ -727,6 +726,7 @@ button.bouton_auth:hover{
     align-items: center;
     color:white;
     overflow:hidden;
+    font-size:3.8rem;
 }
 .lancement > h2{
     position:absolute;
@@ -746,8 +746,8 @@ button.bouton_auth:hover{
 }
 
 .audio-player .album-image {
-    min-height: 100px;
-    width: 110px;
+    min-height: 10rem;
+    width: 11rem;
     background-size: cover;
     background-position:center;
 }
@@ -764,12 +764,12 @@ button.bouton_auth:hover{
     appearance: none;
     background-color: transparent;
     color: white;
-    height: 10px;
+    height: 1rem;
 }
 .audio-player .player-controls progress[value]::-webkit-progress-bar {
     background-color: lightgray;
-    border-radius: 2px;
-    border: 1px solid #dfdfdf;
+    border-radius: 0.2rem;
+    border: 0.1rem solid #dfdfdf;
     color: white;
 }
 .audio-player .player-controls progress::-webkit-progress-value {
@@ -781,9 +781,9 @@ button.bouton_auth:hover{
 .audio-player #play-btn {
     background-image: url("../img/play-button.png");
     background-size: cover;
-    width: 50px;
-    height: 50px;
-    margin-left:15px;
+    width: 5rem;
+    height: 5rem;
+    margin-left:1.5rem;
 }
 .audio-player #play-btn.pause {
     background-image: url("../img/pause-button.png");
@@ -792,9 +792,9 @@ button.bouton_auth:hover{
 /* Flip card ajout playlist */
 
 .flip-card {
-    width: 300px;
-    height: 300px;
-    margin-top:60px;
+    width: 30rem;
+    height: 30rem;
+    margin-top:4rem;
 }
 
 .flip-card-inner {
@@ -839,6 +839,7 @@ a.a_plus{
 }
 a.a_plus > i.plus{
     color:grey;
+    font-size:4rem;
 }
 a.a_retour{
     position: absolute;
@@ -882,7 +883,7 @@ a.a_retour > i.retour{
     width:max-content;
 }
 .danslaplaylist > i{
-    margin-left:5px;
+    margin-left:0.5rem;
 }
 .addplaylist{
     width:max-content;
@@ -892,6 +893,20 @@ a.a_retour > i.retour{
 }
 .visible{
     display:block!important;
+}
+.interrogation{
+    background-color: var(--secondaire);
+    border-radius:1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:25rem;
+    height:25rem;
+    margin-right: 3.5rem;
+    margin-left: 3.5rem;
+}
+.interrogation > img{
+    padding:1rem;
 }
 
 /* Responsive */
@@ -923,30 +938,31 @@ a.a_retour > i.retour{
     .infos_user{
         flex-direction: column;
         align-items: center;
-        padding-left: 0px;
+        padding-left: 0;
     }
     .infos{
-        padding-left: 0px;
+        padding-left: 0;
     }
     .menu{
-        padding-left: 10px;
+        padding-left: 1rem;
     }
     .fit-play{
-        margin-left: 0px;
+        margin-left: 0;
     }
     .photo_user{
-        width: 2rem;
-        height: 2rem;
+        width: 2.9rem;
+        height: 2.9rem;
     }
     .favrep{
         display: none;
     }
     .listfavor{
-        justify-content: space-around;
-        margin-bottom: 40px;
+        justify-content: space-between;
+        width:95%;
+        margin: 0 auto 4rem auto;
     }
     .error404 img{
-        height: 300px;
+        height: 30rem;
     }
     .menucote{
         display: none;
@@ -954,17 +970,18 @@ a.a_retour > i.retour{
     .menu2{
         display: flex;
         justify-content: space-evenly;
-        padding:1rem 0;
+        padding:2rem 0;
         background-color:var(--principale);
     }
     .menu2 > a > i{
         text-decoration:none;
         color:white;
-        font-size:2rem;
+        font-size:2.9rem;
     }
     .div_chansons{
         padding:0;
         height:73vh;
+        width:100%;
     }
     .chansons{
         height:94%;
@@ -977,20 +994,26 @@ a.a_retour > i.retour{
     .flip-card:last-child{
         margin:0 0 8rem 0;
     }
-    .div_chansons > .titre{
-        display:none;
-    }
     .playlist_back,.titrechanson,.lancement > h2{
-        font-size:1.5rem;
+        font-size:1.9rem;
     }
     .addplaylist{
-        font-size:1rem;
+        font-size:1.5rem;
     }
     .lancement > h2{
-        font-size:1.1rem;
+        font-size:1.8rem;
     }
     .album-image{
         display:none;
+    }
+    a.a_plus > i.plus{
+        font-size:3rem;
+    }
+    a.a_like > i.jelike{
+        font-size:4rem;
+    }
+    a.a_like > i.jelikepas{
+        font-size:4rem;
     }
 
     /* Playlists */
@@ -1008,7 +1031,7 @@ a.a_retour > i.retour{
         margin-bottom:0.4rem;
     }
     .listplaylist > p{
-        font-size:1.2rem;
+        font-size:2.2rem;
     }
     .playlistt > a{
         width:max-content;
@@ -1018,32 +1041,26 @@ a.a_retour > i.retour{
         height:65vw;
         margin-right: 0;
     }
-    .interrogation{
-        background-color: var(--secondaire);
-        border-radius:1rem;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    .interrogation > img{
-        padding:1rem;
-    }
     .titre{
         text-align: center;
-        font-size:1.1rem;
+        font-size:4.1rem;
         padding:0;
+    }
+    .interrogation{
+        height:65vw;
+        width:65vw;
     }
     /* carousel */
     .item {
-        margin: 10px;
+        margin: 1rem;
         background-color: #fff;
-        box-shadow: 0 15px 35px #3232321a,0 5px 15px #0000001a;
+        box-shadow: 0 1.5rem 3.5rem #3232321a,0 0.5rem 1.5rem #0000001a;
         transition: transform .3s;
-        transform: translate3d(0,-1px,0)
+        transform: translate3d(0,-0.1rem,0)
     }
 
     .item:hover {
-        transform: translate3d(0,-10px,0)
+        transform: translate3d(0,-1rem,0)
     }
 
     .item img {
@@ -1053,12 +1070,12 @@ a.a_retour > i.retour{
     }
 
     .item__body {
-        padding: 25px
+        padding: 2.5rem;
     }
 
     .item__title {
-        font-size: 24px;
-        margin-bottom: 5px;
+        font-size: 2.4rem;
+        margin-bottom: 0.5rem;
         font-weight: 700;
         color: #232323
     }
@@ -1092,15 +1109,15 @@ a.a_retour > i.retour{
     }
     .carousel__next,.carousel__prev {
         position: absolute;
-        width: 40px;
-        height: 40px;
+        width: 4rem;
+        height: 4rem;
         background: var(--principale) url('../img/fleche.png') 50% no-repeat;
-        background-size: 20px 20px;
+        background-size: 2rem 2rem;
         border-radius: 50%;
         top: 50%;
-        margin-top: -20px;
+        margin-top: -2rem;
         right: 0.3rem;
-        box-shadow: 0 15px 35px #3232321a,0 5px 15px #0000001a;
+        box-shadow: 0 1.5rem 3.5rem #3232321a,0 0.5rem 1.5rem #0000001a;
         cursor: pointer;
         transition: transform .3s,opacity .3s;
     }
@@ -1121,7 +1138,7 @@ a.a_retour > i.retour{
 
     .carousel__pagination {
         position: absolute;
-        bottom: -20px;
+        bottom: -2rem;
         left: 0;
         right: 0;
         text-align: center;
@@ -1130,12 +1147,12 @@ a.a_retour > i.retour{
 
     .carousel__pagination__button {
         background-color: var(--principale);
-        width: 10px;
-        height: 10px;
+        width: 1rem;
+        height: 1rem;
         border-radius: 50%;
         display: inline-block;
-        margin: 0 3px;
-        box-shadow: 0 2px 5px #3232321a;
+        margin: 0 0.3rem;
+        box-shadow: 0 0.2rem 0.5rem #3232321a;
         transition: transform .3s;
         cursor: pointer;
     }
@@ -1146,304 +1163,53 @@ a.a_retour > i.retour{
     .carousel__pagination {
         display:block;
     }
+
+    /* Infos playlist */
+    .listfavor > span{
+        width:max-content!important;
+        padding-right:1rem;
+    }
+    .listfavor span > a{
+        font-size:2.5rem;
+    }
+
+    /* Page user */
+    .user{
+        flex-direction: column;
+    }
+    .info h3{
+        margin: 5rem 0 0 0;
+    }
+
+    /* Add playlist */
+    .formconnexion .col{
+        padding: 2rem 3rem;
+    }
+    .fit-file{
+        margin-left:5rem;
+    }
+
+    /* Add musique */
+    .imp{
+        flex-direction: column;
+    }
+    .lf{
+        margin:0;
+    }
+    /* Page recherche */
+    .listemembres{
+        align-items: center;
+        justify-content: center;
+    }
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*nav{
-    display:flex;
-    justify-content: space-between;
-    align-items: center;
-    background: var(--principale);
-    color: white;
-    padding-left:25px;
-    padding-right:25px;
-    height:100%;
-    font-size:1.7rem;
-}
-nav > ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
+/* Page recherche */
+.listemembres{
     display: flex;
-    justify-content: flex-end;
-}
-
-nav > ul > li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    height:100%;
-}
-
-nav > ul > li a:hover:not(.active) {
-    background-color: #778ca3;
-}
-
-header{
-    grid-area:h;
-}
-#main{
-    grid-area: c;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: auto;
-}
-.contenumain{
-    width:90%;
-    background-color:white;
-    border-radius:50px;
-    height:95%;
-}
-.menucote{
-    grid-area: m;
-}
-.menucote > div:nth-child(1) > a:nth-child(1){
-    text-align:center;
-}
-#grid{
-    display: grid;
-    grid-template-columns: 1fr 3fr;
-    grid-template-rows: 0.5fr 6fr 0.5fr;
-    grid-template-areas:
-        "m h"
-        "m c"
-        "a a";
-    height:100%;
-}
-
-
-
-
-.formrecherche{
-    position: relative;
-    transition: all 0.3s;
-    width: 30px;
-    height: 30px;
-    background: white;
-    box-sizing: border-box;
-    border-radius: 25px;
-    border: 4px solid white;
-}
-
-.formrecherche > input{
-    width: 100%;;
-    height: 21px;
-    line-height: 20px;
-    outline: 0;
-    border: 0;
-    display: none;
-    font-size: 0.5em;
-    border-radius: 20px;
-    padding: 0 35px;
-}
-
-.formrecherche > .fa{
-    box-sizing: border-box;
-    padding: 7px;
-    width: 21px;
-    height: 21px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    border-radius: 50%;
-    color: #4b6584;
-    text-align: center;
-    font-size: 0.6em;
-    transition: all 1s;
-}
-
-.formrecherche:hover{
-    width: 250px;
-    cursor: pointer;
-}
-
-.formrecherche:hover > input{
-    display: block;
-}
-
-.formrecherche:hover .fa{
-    background: white;
-    color: #4b6584;
-}
-
-.formulaires{
-    background-color: var(--secondaire);
-    border-radius: 10px;
-    padding:50px;
-}
-
- input[type=text], input[type=email], input[type=password]{
-     background-color: transparent;
-     border: navajowhite;
-     border-bottom: 2px solid;
-     font-size: 1rem;
-}
-button[type=submit]{
-     margin-top:1rem;
-     text-align:center;
-     background-color: var(--principale);
-     color: white;
-     border: none;
-     padding:0.6rem;
- }
- .textlabel{
-     font-size:2rem;
- }
-.chansons{
-    display:flex;
-    flex-wrap: wrap;
-    height: 100%;
-    overflow: auto;
-    align-items: center;
-    justify-content: space-evenly;
-    padding: 20px;
-}
-.chanson{
-    background-color:red;
-    width:17vw;
-    height:17vw;
-    border-radius: 200px;
-    margin-bottom:20px;
-    overflow: hidden;
-    position: relative;
-}
-.infoschanson{
-    width:100%;
-    height:50%;
-    background:red;
-    z-index:5;
-    position:absolute;
-    top:50%;
-}
-.infoschanson > h4{
-    bottom: 38%;
-    position: absolute;
-    color: white;
-    width:100%;
-    text-align: center;
-}
-.imgchanson{
-    position:absolute;
-    width:100%;
-    background-image: url("/img/disquedefaut.jpg");
-    height:100%;
-    background-size: 105%;
-    background-position: center;
-}
-
-.menucote > div:nth-child(1){
-    display:flex;
-    height:25%;
-    justify-content: center;
-}
-.menucote > div:nth-child(2){
-    display:flex;
-    height:65%;
-    justify-content: space-evenly;
-    align-items: center;
     flex-direction: column;
 }
-.logo {
-    height: 100%;
-}
-.categories > a {
+.listemembres > a{
+    font-size:1.8rem;
     text-decoration: none;
-    color:white;
-    font-size:2rem;
-}
-.categories > a:hover {
     color:var(--secondaire);
 }
-
-.fondbleu{
-    background-color: var(--principale);
-    width:100%;
-    height:100%;
-}
-.pageconnexion{
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    color:white;
-    flex-direction: column;
-}
-.choix{
-    display:flex;
-    font-size:2.5rem;
-}
-.choix > div{
-    padding:20px;
-}
-.forminscription{
-    display:none;
-}
-.connexion, .inscription{
-    cursor:pointer;
-}
-.choixactif{
-    color:var(--secondaire);
-}
-*/

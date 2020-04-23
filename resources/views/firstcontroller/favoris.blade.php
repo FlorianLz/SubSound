@@ -9,7 +9,7 @@
                 <div class="listfavor">
                     <span class="titrefav"><img class="fit-picture" src="{{$c->url_img}}"
                                         alt="Images de la musique">{{$c->nom}}</span>
-                    <span class="favrep">{{$c->utilisateur->name}}</span>
+                    <span>{{$c->utilisateur->name}}</span>
                     <span class="favrep">{{$c->style}}</span>
                     <span class="favrep">{{$c->elleEstLikee()->count()}} <i class="far fa-heart jelike esp"></i></span>
                     <span><a class="btnsuppr" href="/like/{{$c->id}}">x</a></span>

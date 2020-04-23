@@ -120,7 +120,7 @@
             <div id="main">
                 <form id="search" data-pjax>
                     <input type="search" name="search"  required />
-                    <input type="submit" />
+                    <input type="submit" value="Rechercher"/>
                 </form>
                 <div id="pjax-container" class="contenumain">
                     @yield('contenu')
@@ -152,7 +152,6 @@
             <script src="/js/jquery.js"></script>
             <script src="/js/jquery.pjax.js"></script>
             <script src="/js/divers.js"></script>
-            <script src="/js/carousel.js"></script>
         </body>
     </html>
     @endif
