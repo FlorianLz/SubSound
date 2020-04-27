@@ -17,7 +17,7 @@
                     <span>{{$d->utilisateur->name}}</span>
                     <span class="favrep">{{$d->style}}</span>
                     <span class="favrep">{{$d->elleEstLikee()->count()}} <i class="far fa-heart jelike esp"></i></span>
-                    <span><a class="btnsuppr" href="/suppr/{{$d->id}}">x</a></span>
+                    <span><a class="btnsuppr" href="/suppr/{{$d->id}}" data-pjax>x</a></span>
                 </div>
             @endif
         @endforeach

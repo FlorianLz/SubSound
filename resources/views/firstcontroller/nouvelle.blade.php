@@ -12,7 +12,7 @@
                 </ul>
             </div>
         @endif
-        <form action="/chanson/create" method="POST" enctype="multipart/form-data">
+        <form action="/chanson/create" method="POST" enctype="multipart/form-data" data-pjax>
             @csrf
             <input type="text" name="nom" placeholder="Titre de la musique..." value="{{old('nom')}}" class="input_form " required>
             <input type="text" name="style" placeholder="Genre de la musique..." value="{{old('style')}}" class="input_form " required>

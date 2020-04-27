@@ -2,7 +2,7 @@
 @section("contenu")
     <div>
         <div>
-            <div class="titre"><h2>Musiques de : {{$playlist->nom}}</h2></div>
+            <div class="titre"><h2>Musiques de : {{$playlist->nom}}</h2><a class="sup-playlist" href="/playlist/supprimer/{{$playlist->id}}"><i class="fas fa-trash-alt sup-playlist"></i></a></div>
         </div>
 
     </div>

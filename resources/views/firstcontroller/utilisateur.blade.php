@@ -23,7 +23,7 @@
                 @else
                     <div class="user">
                         <div>
-                            <form action="/utilisateur/update/{{Auth::id()}}" method="POST"  enctype="multipart/form-data">
+                            <form action="/utilisateur/update/{{Auth::id()}}" method="POST"  enctype="multipart/form-data" data-pjax>
                                 @csrf
                                 <label for="avatar" class="label-file col us"><img class="fit-user" src="{{$utilisateurr->url_avatar}}" alt="image utilisateur"></label>
                                 <input type="file" id="avatar" name="avatar" value="{{old('url')}}" class="input_file">

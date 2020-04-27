@@ -125,7 +125,11 @@ class FirstController extends Controller
         $c-> user_id = Auth::id();
         $c->save(); //INSERT INTO chansons VALUES (NULL,...)
         //return redirect("/utilisateur/".Auth::id());
-        return back();
+
+        $chansons=Chanson::all(); //SELECT * FROM chansons
+        $playlists=Playlist::all(); //SELECT * FROM playlist
+        $user=User::findOrFail(Auth::id());
+        return view("firstcontroller.musiques", ["chansons"=>$chansons,"utilisateur"=>$user,"playlists"=>$playlists]);
 
     }
 
@@ -181,7 +185,8 @@ class FirstController extends Controller
 
     public function newplaylistandadd($id){
         $playlists=Playlist::all();
-        return view("firstcontroller.addPlaylist", ["active" => "playlist", "idchanson"=>$id,"playlists"=>$playlists]);
+        $user=User::findOrFail(Auth::id());
+        return view("firstcontroller.addPlaylist", ["active" => "playlist", "idchanson"=>$id,"playlists"=>$playlists,"utilisateur"=>$user]);
     }
     public function supprimerchanson($idchanson){
         $chanson = Chanson::findOrFail($idchanson);
