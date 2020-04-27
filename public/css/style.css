@@ -139,11 +139,13 @@ h3.msg_auth{
     color:var(--principale);
     text-align: center;
     padding-top:3rem;
+    font-size: 2.5rem;
 }
 .boutons_auth{
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-size: 3rem;
 }
 a.bouton_auth{
     width:70%;
@@ -231,6 +233,24 @@ h4.titrechanson{
     top:50%;
     left:50%;
     transform: translate(-50%,-50%);
+}
+.boutonpause{
+    width:40%;
+    height:40%;
+    background-size: cover;
+    position:absolute;
+    z-index:20;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    background-image: url("../img/pause-button.png");
+}
+.boutonplay_list{
+    width: 50px;
+    position: absolute;
+    left: 30px;
+    height: 50px;
+    display:none;
 }
 .autoplay{
     padding-left:0.7rem;
@@ -461,7 +481,7 @@ button.bouton_auth:hover{
 .btnsuppr:hover{
     color:var(--principale);
 }
-.listfavor:hover{
+.listfavor:hover,.musiqueencours{
     background-color: #e2e2e2;
 }
 .listfavor span:nth-child(1){
@@ -586,10 +606,13 @@ button.bouton_auth:hover{
 .info{
     text-align: center;
 }
+.info ul li{
+    list-style-type: none;
+}
 .info h3{
     font-size: 4.8rem;
     color:var(--secondaire);
-    margin-bottom:10rem;
+    margin-bottom:4rem;
 }
 
 .imp{
@@ -614,6 +637,8 @@ button.bouton_auth:hover{
     justify-content: space-around;
     align-items: center;
     height: 80%;
+    font-size: 10rem;
+
 }
 .noUser div{
     display: flex;
@@ -750,6 +775,7 @@ button.bouton_auth:hover{
     width: 11rem;
     background-size: cover;
     background-position:center;
+    display:none;
 }
 .audio-player .player-controls {
     align-items: center;
@@ -851,6 +877,7 @@ a.a_retour{
 }
 a.a_retour > i.retour{
     color:grey;
+    font-size: 4.5rem;
 }
 .playlist_back{
     text-align: center;
@@ -871,6 +898,9 @@ a.a_retour > i.retour{
     align-items: center;
     height: 54%;
     overflow: auto;
+}
+.listeplaylists > a {
+    font-size: 2.5rem;
 }
 .imgchansonback{
     filter:brightness(0.2);
@@ -913,6 +943,9 @@ a.a_retour > i.retour{
 @media screen and (max-width:800px){
     body{
         flex-direction:column;
+    }
+    .titre>a{
+        display: block;
     }
     #main{
         width:100%;
@@ -1045,6 +1078,9 @@ a.a_retour > i.retour{
         text-align: center;
         font-size:4.1rem;
         padding:0;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
     }
     .interrogation{
         height:65vw;
@@ -1201,6 +1237,11 @@ a.a_retour > i.retour{
         align-items: center;
         justify-content: center;
     }
+    .noUser{
+        flex-direction: column;
+        font-size: 8rem;
+    }
+
 
 }
 /* Page recherche */
@@ -1212,4 +1253,7 @@ a.a_retour > i.retour{
     font-size:1.8rem;
     text-decoration: none;
     color:var(--secondaire);
+}
+.Addcircle{
+    display: none;
 }

@@ -33,6 +33,7 @@
     $(".boutonplay").click(function () {
         $('.imgchanson').removeClass('encours').removeClass('rotate');
         $('.infoschanson').removeClass('encours').removeClass('rotate');
+        $('.album-image').addClass('visible');
         let url = $(this).attr('data-file');
         let titre = $(this).attr('data-titre');
         let id = $(this).attr('data-id');
@@ -59,7 +60,15 @@
         document.getElementById('flip-card-inner'+id).classList.add('flip-card-inner-rot');
         setTimeout(function(){
             document.getElementById('flip-card-front'+id).style.display="none";
-        }, 700);
+        }, 1000);
+    });
+    $(".a_retour").click(function () {
+        let id = $(this).attr('data-id');
+        document.getElementById('flip-card-front'+id).style.display="block";
+        document.getElementById('flip-card-inner'+id).classList.remove('flip-card-inner-rot');
+        setTimeout(function(){
+            document.getElementById('flip-card-back'+id).style.display="none";
+        }, 1000);
     });
 
 </script>

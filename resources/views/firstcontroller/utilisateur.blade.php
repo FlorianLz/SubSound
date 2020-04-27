@@ -32,10 +32,14 @@
                                 <input type="submit" value="Valider" class="bouton_aut">
                             </form>
                         </div>
-                        @endif
-                        @endguest
+                @endif
+                @endguest
                         <div class="info">
-                            <h3>Vos statistiques</h3>
+                            @if(Auth::id() == $utilisateurr->id)
+                                <h3>Vos statistiques</h3>
+                            @else
+                                <h3>Les statistiques de {{$utilisateurr->name}}</h3>
+                            @endif
                             <ul>
                                 <li>{{$utilisateurr->chansons()->count()}} chansons uploadées</li> <!--// avec count() -> permet de récupérer directement le nb de chansons sans lire toutes les données-->
                                 <li>{{$utilisateurr->jeLesSuit()->count()}} abonnements</li>
@@ -43,6 +47,7 @@
                             </ul>
                         </div>
                     </div>
+            </div>
 
 
 
