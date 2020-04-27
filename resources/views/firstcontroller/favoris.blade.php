@@ -36,12 +36,13 @@
         chanson.attr('data-status',status);
 
         if(status === 'lecture'){
-            $('#boutonplay'+idencours).addClass('boutonpause');
             $('#boutonplay'+idencours).removeClass('boutonplay');
+            $('#boutonplay'+idencours).addClass('boutonpause');
+
         }
         if(status === 'pause'){
-            $('#boutonplay'+idencours).addClass('boutonplay');
             $('#boutonplay'+idencours).removeClass('boutonpause');
+            $('#boutonplay'+idencours).addClass('boutonplay');
         }
 
     }
@@ -104,17 +105,16 @@
         var status = $(this).attr('data-status');
         var player=document.getElementById('player');
         if(status === 'pause'){
-            $('#listfavor'+idclic).attr('data-status', 'lecture');
+            $('#listfavor'+idclic).attr('data-status', 'pause');
             $('#boutonplay'+idclic).removeClass('boutonpause');
             $('#boutonplay'+idclic).addClass('boutonplay');
         }
         if(status === 'lecture'){
-            $('#listfavor'+idclic).attr('data-status', 'pause');
+            $('#listfavor'+idclic).attr('data-status', 'lecture');
             $('#boutonplay'+idclic).removeClass('boutonplay');
             $('#boutonplay'+idclic).addClass('boutonpause');
         }
 
-    })
-
+    });
 
 </script>

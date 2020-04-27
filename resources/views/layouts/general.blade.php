@@ -53,11 +53,7 @@
                 <div class="menu">
                     <h3>MENU</h3>
                     <a href="/" data-pjax>
-                        @if($active ?? ''=='accueil')
-                        <p id="accueil" class="accueil actif" onclick="changeractif(this.id);"><i class="fas fa-home"></i><span>Accueil</span></p>
-                        @else
-                            <p id="accueil" class="accueil" onclick="changeractif(this.id);"><i class="fas fa-home"></i><span>Accueil</span></p>
-                        @endif
+                        <p id="accueil" class="accueil" onclick="changeractif(this.id);"><i class="fas fa-home"></i><span>Accueil</span></p>
                     </a>
                 @guest
                 </div>
@@ -157,10 +153,15 @@
     @endif
 
 <script>
-    if (document.getElementById('play-btn').getAttribute('data-id') != 0 && document.getElementById('play-btn').getAttribute('data-status') === 'lecture'){
-        document.getElementById('imgchanson'+document.getElementById('play-btn').getAttribute('data-id')).classList.add('rotate');
-        document.getElementById('infoschanson'+document.getElementById('play-btn').getAttribute('data-id')).classList.add('rotate');
-        document.getElementById('imgchanson'+document.getElementById('play-btn').getAttribute('data-id')).classList.add('encours');
-        document.getElementById('infoschanson'+document.getElementById('play-btn').getAttribute('data-id')).classList.add('encours');
+    if ($('#play-btn').attr('data-id') != 0 && $('#play-btn').attr('data-status') === 'lecture'){
+        var idchanson = $('#play-btn').attr('data-id');
+        if($('#infoschanson'+idchanson)){
+            $('#infoschanson'+idchanson).addClass('rotate');
+            $('#imgchanson'+idchanson).addClass('encours');
+            $('#infoschanson'+idchanson).addClass('encours');
+            $('#boutonplay'+$('#play-btn').attr('data-id')).addClass('boutonpause');
+            $('#boutonplay'+$('#play-btn').attr('data-id')).attr('data-status','lecture');
+        }
+
     }
 </script>

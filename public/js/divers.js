@@ -1,11 +1,7 @@
 $(document).pjax('[data-pjax] a, a[data-pjax]', '#pjax-container');
 $(document).on('submit', 'form[data-pjax]', function(event) {
-    $.pjax.submit(event, '#pjax-container')
+    $.pjax.submit(event, '#pjax-container');
 });
-
-$(document).on('submit', 'form[data-pjax]', function(event) {
-    $.pjax.submit(event, '#pjax-container')
-})
 
 function changeractif(id){
     let accueil=document.getElementById('accueil');
@@ -162,3 +158,83 @@ $('.autoplay').click(function () {
 });
 
 initPlayers(jQuery('#player-container').length);
+
+$('#play-btn').on('click',function(){
+    var idclic = $(this).attr('data-id');
+    var status = $(this).attr('data-status');
+    var player=document.getElementById('player');
+    if(status === 'pause'){
+        $('#boutonplay'+idclic).attr('data-status', 'lecture');
+        $('#boutonplay'+idclic).removeClass('boutonpause');
+        $('#boutonplay'+idclic).addClass('boutonplay');
+        if($('#imgchanson'+idclic)){
+            $('#imgchanson'+idclic).removeClass('rotate');
+            $('#infoschanson'+idclic).removeClass('rotate');
+        }
+        $('#listfavor'+idclic).attr('data-status', 'pause');
+    }
+    if(status === 'lecture'){
+        $('#boutonplay'+idclic).attr('data-status', 'pause');
+        $('#boutonplay'+idclic).removeClass('boutonplay');
+        $('#boutonplay'+idclic).addClass('boutonpause');
+        if($('#imgchanson'+idclic)){
+            $('#imgchanson'+idclic).addClass('rotate');
+            $('#infoschanson'+idclic).addClass('rotate');
+        }
+        $('#listfavor'+idclic).attr('data-status', 'lecture');
+    }
+
+})
+
+$('.listfavor').on('click', function (e) {
+    var idplayer = $('#play-btn').attr('data-id');
+    var idclic = $(this).attr('data-id');
+
+    if(idplayer === idclic){
+
+        //on récupère le status actuel
+        var status = $('#listfavor'+idclic).attr('data-status');
+        var player=document.getElementById('player');
+
+        if (status === 'pause'){
+            player.play();
+            $('#listfavor'+idclic).attr('data-status', 'lecture');
+            $('#boutonplay'+idclic).removeClass('boutonplay');
+            $('#boutonplay'+idclic).addClass('boutonpause');
+            $('#play-btn').attr('data-status', 'lecture');
+            $('#play-btn').addClass('pause');
+        }
+        if (status === 'lecture'){
+            player.pause();
+            $('#listfavor'+idclic).attr('data-status', 'pause');
+            $('#boutonplay'+idclic).removeClass('boutonpause');
+            $('#boutonplay'+idclic).addClass('boutonplay');
+            $('#play-btn').attr('data-status', 'pause');
+            $('#play-btn').removeClass('pause');
+        }
+
+    }else{
+        var chanson=$('#listfavor'+idclic);
+        $('.album-image').addClass('visible');
+        let url = chanson.attr('data-file');
+        let titre = chanson.attr('data-titre');
+        let id = idclic;
+        let audio = $('#player');
+        let image="url('"+chanson.attr('data-image')+"')";
+        audio[0].src = url;
+        audio[0].play();
+        document.getElementById('audio-player').style.display="flex";
+        document.getElementById('play-btn').className = "pause";
+        document.getElementById('play-btn').setAttribute('data-id',id);
+        document.getElementById('play-btn').setAttribute('data-status','lecture');
+        $('#lancement').fadeOut(500);
+        document.getElementById("titremusique").innerHTML = titre;
+        $('.album-image').css('background-image',image);
+        $('.boutonplay_list').hide();
+        $('#boutonplay'+id).show();
+        $('#boutonplay'+id).addClass('boutonpause');
+        chanson.attr('data-status','lecture');
+        $('.listfavor').removeClass('musiqueencours');
+        chanson.addClass('musiqueencours');
+    }
+})
