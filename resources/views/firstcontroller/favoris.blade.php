@@ -6,7 +6,7 @@
         </div>
         @foreach($chansons as $c)
             @if(Auth::user()->ILike->contains($c->id))
-                <div id="listfavor{{$c->id}}" class="listfavor" data-id="{{$c->id}}" data-file="{{$c->url}}" data-titre="{{$c->nom}}" data-image="{{$c->url_img}}">
+                <div class="listfavorglobal"><div id="listfavor{{$c->id}}" class="listfavor" data-id="{{$c->id}}" data-file="{{$c->url}}" data-titre="{{$c->nom}}" data-image="{{$c->url_img}}">
                     <span class="titrefav"><img class="fit-picture" src="{{$c->url_img}}"
                                         alt="Images de la musique">{{$c->nom}}
                     <div id="boutonplay{{$c->id}}" class="boutonpause boutonplay_list" data-id="{{$c->id}}"></div>
@@ -14,7 +14,8 @@
                     <span>{{$c->utilisateur->name}}</span>
                     <span class="favrep">{{$c->style}}</span>
                     <span class="favrep">{{$c->elleEstLikee()->count()}} <i class="far fa-heart jelike esp"></i></span>
-                    <span><a class="btnsuppr" href="/like/{{$c->id}}">x</a></span>
+                </div>
+                <span class="boutonsuppr"><a class="btnsuppr" href="/like/{{$c->id}}">x</a></span>
                 </div>
             @endif
         @endforeach

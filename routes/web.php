@@ -37,6 +37,8 @@ Route::get('/playlist/nouvelle/{idchanson}', 'FirstController@newplaylistandadd'
 
 Route::get('/playlist/update/{idplaylist}/{idchanson}', 'FirstController@ajoutplaylist')->where ('idchanson', '[0-9]+')->middleware('auth');
 
+Route::get('/playlist/supprimer/{idplaylist}', 'FirstController@supprimerplaylist')->where ('idplaylist', '[0-9]+')->middleware('auth');
+
 Route::get('/suppr/{idchanson}', 'FirstController@supprimerchanson')->where ('idchanson', '[0-9]+')->middleware('auth');
 
 Route::get('/infosplaylist/{id}', 'FirstController@infosplaylist')->where ('id', '[0-9]+')->middleware('auth');
@@ -45,7 +47,7 @@ Route::get('/suivre/{id}', 'FirstController@suivre')->where ('id', '[0-9]+')->mi
 
 Route::get('/like/{id}', 'FirstController@like')->where ('id', '[0-9]+')->middleware('auth');
 
-Route::get('/recherche/{s}','FirstController@recherche');
+Route::post('/recherche','FirstController@recherche');
 
 Route::post('/chanson/create', 'FirstController@creerchanson')->middleware('auth');
 

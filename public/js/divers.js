@@ -41,10 +41,6 @@ $(document).ready(function () {
             $(this).attr("src", "/img/logo67.png");
         });
 });
-$('#search').submit(function (e) {
-    e.preventDefault()
-    window.location.href = "/recherche/"+e.target.elements[0].value;
-});
 
 /* Player audio */
 
@@ -236,5 +232,8 @@ $('.listfavor').on('click', function (e) {
         chanson.attr('data-status','lecture');
         $('.listfavor').removeClass('musiqueencours');
         chanson.addClass('musiqueencours');
+        $('.boutonsuppr').css({"visibility":"visible"});
+        $('#boutonsuppr'+id).css({"visibility":"hidden"});
+
     }
 })

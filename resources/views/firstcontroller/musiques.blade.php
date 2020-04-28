@@ -9,7 +9,7 @@
         </div>
         @foreach($chansons as $d)
             @if(Auth::user()->chansons->contains($d->id))
-                <div id="listfavor{{$d->id}}" class="listfavor" data-id="{{$d->id}}" data-file="{{$d->url}}" data-titre="{{$d->nom}}" data-image="{{$d->url_img}}">
+                <div class="listfavorglobal"><div id="listfavor{{$d->id}}" class="listfavor" data-id="{{$d->id}}" data-file="{{$d->url}}" data-titre="{{$d->nom}}" data-image="{{$d->url_img}}">
                     <span class="titrefav"><img class="fit-picture" src="{{$d->url_img}}"
                                                 alt="Images de la musique">{{$d->nom}}
                     <div id="boutonplay{{$d->id}}" class="boutonpause boutonplay_list" data-id="{{$d->id}}"></div>
@@ -17,7 +17,8 @@
                     <span>{{$d->utilisateur->name}}</span>
                     <span class="favrep">{{$d->style}}</span>
                     <span class="favrep">{{$d->elleEstLikee()->count()}} <i class="far fa-heart jelike esp"></i></span>
-                    <span><a class="btnsuppr" href="/suppr/{{$d->id}}" data-pjax>x</a></span>
+                </div>
+                <span class="boutonsuppr" id="boutonsuppr{{$d->id}}"><a class="btnsuppr" href="/suppr/{{$d->id}}" data-pjax>x</a></span>
                 </div>
             @endif
         @endforeach
@@ -47,6 +48,7 @@
             $('#boutonplay'+idencours).removeClass('boutonpause');
         }
 
+        $('#boutonsuppr'+idencours).css({"visibility":"hidden"});
     }
 
     $('.listfavor').on('click', function (e) {
@@ -99,6 +101,8 @@
             chanson.attr('data-status','lecture');
             $('.listfavor').removeClass('musiqueencours');
             chanson.addClass('musiqueencours');
+            $('.boutonsuppr').css({"visibility":"visible"});
+            $('#boutonsuppr'+id).css({"visibility":"hidden"});
         }
     })
 

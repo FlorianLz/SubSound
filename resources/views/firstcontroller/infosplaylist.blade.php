@@ -8,7 +8,7 @@
     </div>
     @foreach($chansons as $c)
         @if($playlist->aLaChanson->contains($c->id))
-            <div id="listfavor{{$c->id}}" class="listfavor" data-id="{{$c->id}}" data-file="{{$c->url}}" data-titre="{{$c->nom}}" data-image="{{$c->url_img}}">
+            <div class="listfavorglobal"><div id="listfavor{{$c->id}}" class="listfavor" data-id="{{$c->id}}" data-file="{{$c->url}}" data-titre="{{$c->nom}}" data-image="{{$c->url_img}}">
             <span class="titrefav"><img class="fit-picture" src="{{$c->url_img}}"
                                         alt="Images de la musique">{{$c->nom}}
                 <div id="boutonplay{{$c->id}}" class="boutonpause boutonplay_list" data-id="{{$c->id}}"></div>
@@ -16,7 +16,8 @@
                 <span>{{$c->utilisateur->name}}</span>
                 <span class="favrep">13:30</span>
                 <span class="favrep"><i class="far fa-heart jelikepas esp"></i>{{$c->elleEstLikee()->count()}}</span>
-                <span><a href="/playlist/update/{{$playlist->id}}/{{$c->id}}" data-pjax>x</a></span>
+            </div>
+                <span class="boutonsuppr"><a href="/playlist/update/{{$playlist->id}}/{{$c->id}}" data-pjax>x</a></span>
             </div>
         @endif
     @endforeach

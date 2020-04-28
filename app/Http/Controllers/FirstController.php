@@ -169,12 +169,19 @@ class FirstController extends Controller
         }
     }
 
-    public function recherche($s) {
+    public function recherche(Request $request) {
+        $s=$request->input('search');
         $users = User::WhereRaw("name LIKE CONCAT('%',?, '%')" ,[$s])->get();
         $chansons = Chanson::WhereRaw("nom LIKE CONCAT('%',?, '%')" ,[$s])->get();
         $playlists=Playlist::all();
-        $user=User::findOrFail(Auth::id());
-        return view("firstcontroller.recherche", ['utilisateurs' =>$users , 'chansons'=>$chansons,'playlists'=>$playlists, "utilisateur"=>$user]);
+        if(!Auth::user()){
+            return view("firstcontroller.recherche", ['utilisateurs' =>$users , 'chansons'=>$chansons,'playlists'=>$playlists]);
+
+        }else{
+            $user=User::findOrFail(Auth::id());
+            return view("firstcontroller.recherche", ['utilisateurs' =>$users , 'chansons'=>$chansons,'playlists'=>$playlists, "utilisateur"=>$user]);
+
+        }
     }
 
     public function ajoutplaylist($idplaylist,$idchanson){
@@ -191,10 +198,25 @@ class FirstController extends Controller
     public function supprimerchanson($idchanson){
         $chanson = Chanson::findOrFail($idchanson);
         if ($chanson->user_id == Auth::id()){
+
+            $chansons=Chanson::all();
+            $playlists=Playlist::all(); //SELECT * FROM playlist
+
+            foreach ($chansons as $c){
+                if (Chanson::findOrFail($idchanson)->elleEstLikee->contains($c->id)){
+                    Chanson::findOrFail($idchanson)->elleEstLikee()->toggle($c->id);
+                }
+            }
+
+            foreach ($playlists as $p){
+                if (Playlist::findOrFail($p->id)->aLaChanson->contains($idchanson)){
+                    Playlist::findOrFail($p->id)->aLaChanson()->toggle($idchanson);
+                }
+            }
+
             $chanson->delete();
 
-            $chansons=Chanson::all(); //SELECT * FROM chansons
-            $playlists=Playlist::all(); //SELECT * FROM playlist
+
             $user=User::findOrFail(Auth::id());
             return view("firstcontroller.musiques", ["chansons"=>$chansons,"active" => "favoris","utilisateur"=>$user,"playlists"=>$playlists]);
         }else{
@@ -202,6 +224,31 @@ class FirstController extends Controller
             $playlists=Playlist::all(); //SELECT * FROM playlist
             $user=User::findOrFail(Auth::id());
             return view("firstcontroller.musiques", ["chansons"=>$chansons,"active" => "favoris","utilisateur"=>$user,"playlists"=>$playlists]);
+        }
+    }
+
+    public function supprimerplaylist($idplaylist){
+        $playlist = Playlist::findOrFail($idplaylist);
+        if ($playlist->user_id == Auth::id()){
+
+            $chanson = Chanson::all();
+            foreach ($chanson as $c){
+                if (Playlist::findOrFail($idplaylist)->aLaChanson->contains($c->id)){
+                    Playlist::findOrFail($idplaylist)->aLaChanson()->toggle($c->id);
+                }
+            }
+
+            $playlist->delete();
+
+            $chansons=Chanson::all(); //SELECT * FROM chansons
+            $playlists=Playlist::all(); //SELECT * FROM playlist
+            $user=User::findOrFail(Auth::id());
+            return view("firstcontroller.playlist", ["chansons"=>$chansons,"active" => "favoris","utilisateur"=>$user,"playlists"=>$playlists]);
+        }else{
+            $chansons=Chanson::all(); //SELECT * FROM chansons
+            $playlists=Playlist::all(); //SELECT * FROM playlist
+            $user=User::findOrFail(Auth::id());
+            return view("firstcontroller.playlist", ["chansons"=>$chansons,"active" => "favoris","utilisateur"=>$user,"playlists"=>$playlists]);
         }
     }
 

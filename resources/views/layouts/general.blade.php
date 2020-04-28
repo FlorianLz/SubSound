@@ -114,8 +114,9 @@
             </div>
 
             <div id="main">
-                <form id="search" data-pjax>
-                    <input type="search" name="search"  required />
+                <form id="search" method="POST" action="/recherche" data-pjax>
+                    @csrf
+                    <input type="search" name="search" required />
                     <input type="submit" value="Rechercher"/>
                 </form>
                 <div id="pjax-container" class="contenumain">
