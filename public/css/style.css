@@ -97,7 +97,7 @@ body{
     padding:0 1rem;
     text-decoration:none;
     margin-bottom:4rem;
-
+    display:none;
 }
 .infos > a > p:hover{
     background-color: var(--principale);
@@ -265,7 +265,7 @@ h4.titrechanson{
     height: 50px;
     display:none;
 }
-.autoplay{
+.autoplay,.volume{
     padding-left:1.5rem;
     font-size:2rem;
 }
@@ -297,15 +297,6 @@ a.a_like > i{
 
 .rotate{
     animation: rotation 8s infinite linear;
-}
-
-@keyframes rotation {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(359deg);
-    }
 }
 
 /* Page de connexion */
@@ -481,6 +472,9 @@ button.bouton_auth:hover{
 
 .fit-file {
     margin-left: 10rem;
+    height: 13.7rem;
+    width: 13.7rem;
+    border-radius:2rem;
 }
 
 /* Favoris */
@@ -504,7 +498,6 @@ button.bouton_auth:hover{
 .btnsuppr{
     text-decoration: none;
     color:var(--grisclair);
-    z-index:1000;
 }
 .btnsuppr:hover{
     color:var(--principale);
@@ -728,14 +721,14 @@ button.bouton_auth:hover{
     padding: 0.5rem;
     font-size: 1.7rem;
     float: left;
-    width: 80%;
+    width: 70%;
     background: #f1f1f1;
     border:none;
 }
 
 #search input[type=submit]{
     float: left;
-    width: 20%;
+    width: 30%;
     padding: 0.5rem;
     background: var(--principale);
     color: white;
@@ -790,15 +783,6 @@ button.bouton_auth:hover{
     animation:gauche-droite 10s;
     left:50%;
     transform: translateX(-50%);
-}
-@keyframes gauche-droite {
-    0% {
-        left:-20%;
-    }
-    100% {
-        left:50%;
-        transform: translateX(-50%);
-    }
 }
 
 .audio-player .album-image {
@@ -945,6 +929,9 @@ a.a_retour > i.retour{
 }
 .danslaplaylist > i{
     margin-left:0.5rem;
+}
+.invisible{
+    display:none!important;
 }
 .addplaylist{
     width:max-content;
@@ -1255,6 +1242,9 @@ a.a_retour > i.retour{
     .info h3{
         margin: 5rem 0 0 0;
     }
+    .deconnexion_button{
+        display:block;
+    }
 
     /* Add playlist */
     .formconnexion .col{
@@ -1295,4 +1285,104 @@ a.a_retour > i.retour{
 }
 .Addcircle{
     display: none;
+}
+
+/* Animations */
+
+/* Barre lecture bienvenue */
+@keyframes gauche-droite {
+    0% {
+        left:-20%;
+    }
+    100% {
+        left:50%;
+        transform: translateX(-50%);
+    }
+}
+
+/* Rotation des disques */
+@keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(359deg);
+    }
+}
+
+/* Loader */
+.loaderpage{
+    position: absolute;
+    width:100%;
+    height:100%;
+    z-index:200;
+    background-color:var(--principale);
+}
+.loader {
+    margin: 0 auto;
+    width: 60px;
+    height: 50px;
+    text-align: center;
+    font-size: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translateY(-50%) translateX(-50%);
+
+}
+.loader > div {
+    height: 100%;
+    width: 8px;
+    display: inline-block;
+    float: left;
+    margin-left: 2px;
+    -webkit-animation: delay 0.8s infinite ease-in-out;
+    animation: delay 0.8s infinite ease-in-out;
+}
+.loader .bar1 {
+    background-color: white;
+}
+.loader .bar2 {
+    background-color: white;
+    -webkit-animation-delay: -0.7s;
+    animation-delay: -0.7s;
+}
+.loader .bar3 {
+    background-color: white;
+    -webkit-animation-delay: -0.6s;
+    animation-delay: -0.6s;
+}
+.loader .bar4 {
+    background-color: white;
+    -webkit-animation-delay: -0.5s;
+    animation-delay: -0.5s;
+}
+.loader .bar5 {
+    background-color: white;
+    -webkit-animation-delay: -0.4s;
+    animation-delay: -0.4s;
+}
+.loader .bar6 {
+    background-color: white;
+    -webkit-animation-delay: -0.3s;
+    animation-delay: -0.3s;
+}
+
+@-webkit-keyframes delay {
+    0%, 40%, 100% {
+        -webkit-transform: scaleY(0.05);
+    }
+    20% {
+        -webkit-transform: scaleY(1);
+    }
+}
+@keyframes delay {
+    0%, 40%, 100% {
+        transform: scaleY(0.05);
+        -webkit-transform: scaleY(0.05);
+    }
+    20% {
+        transform: scaleY(1);
+        -webkit-transform: scaleY(1);
+    }
 }

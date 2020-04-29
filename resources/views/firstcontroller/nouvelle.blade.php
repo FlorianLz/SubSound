@@ -20,9 +20,9 @@
                 <label for="chanson" class="label-file col"><p>Importer votre musique<br>au format mp3</p><img class="fit-file" src="/img/upload.png"
                                                                                                                alt="upload"></label>
                 <input type="file" id="chanson" name="chanson" value="{{old('url')}}" class="input_file" required>
-                <label for="chanson_img" class="label-file col lf"><p>Importer la pochette<br>de la musique</p><img class="fit-file" src="/img/upload.png"
+                <label for="chanson_img" class="label-file col lf"><p>Importer la pochette<br>de la musique</p><img id="apercuimg" class="fit-file" src="/img/upload.png"
                                                                                                                     alt="upload"></label>
-                <input type="file" id="chanson_img" name="chanson_img" value="{{old('url')}}" class="input_file" required>
+                <input type="file" id="chanson_img" name="chanson_img" value="{{old('url')}}" class="input_file imgapercu" required>
             </div>
             <input type="submit" value="Envoyer" class="bouton_aut">
         </form>
