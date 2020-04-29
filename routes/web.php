@@ -19,9 +19,13 @@ Route::get('/connexion', 'FirstController@connexion');
 
 Route::get('/inscription', 'FirstController@inscription');
 
+Route::get('/resetmdp', 'FirstController@resetmdp');
+
 Route::get('/favoris', 'FirstController@favoris')->middleware('auth');
 
 Route::get('/musiques', 'FirstController@musiques')->middleware('auth');
+
+Route::get('/musiques/{id}', 'FirstController@musiquesuser')->where ('id', '[0-9]+');
 
 Route::get('/playlist', 'FirstController@playlist')->middleware('auth');
 

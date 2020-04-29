@@ -192,6 +192,8 @@ function lectureEnCours(){
         if(status === 'lecture'){
             $('#listfavor'+idclic).attr('data-status', 'lecture');
             $('#boutonplay'+idclic).removeClass('boutonplay').addClass('boutonpause');
+            $('#imgchanson'+idclic).addClass('rotate').addClass('encours');
+            $('#infoschanson'+idclic).addClass('rotate').addClass('encours');;
         }
 
     });
@@ -275,8 +277,8 @@ function lectureEnCours(){
         let status = $(this).attr('data-status');
         let clic=$(this);
         $.get( "/playlist/update/"+idplaylist+"/"+id, '', function(data) {
-            $('#p'+idplaylist).toggleClass('danslaplaylist');
-            $('#check'+idplaylist).toggleClass('invisible');
+            $('#p'+idplaylist+'-'+id).toggleClass('danslaplaylist');
+            $('#check'+idplaylist+'-'+id).toggleClass('invisible');
             if(status==='contient'){
                 clic.attr('data-status','necontientpas');
             }else{
@@ -298,11 +300,10 @@ function lectureEnCours(){
         $.get( "/playlist/supprimer/"+idplaylist, '', function(data) {
         }).done(
             $.get( "/playlist", '', function(data) {
+                $('#pjax-container').html(data);
                 window.history.pushState('playlist','playlist', '/playlist');
             })
         );
     })
-
-
 
 }

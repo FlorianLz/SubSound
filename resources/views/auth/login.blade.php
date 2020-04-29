@@ -2,7 +2,7 @@
 @section('contenu')
 <div id="formconnexion" class="container formconnexion">
     <div class="titre"><h2>Connexion</h2></div>
-    <h3>De retour parmi nous ? Connectez-vous dès maintenant !</h3>
+    <h3>De retour parmi nous ?<br /> Connectez-vous dès maintenant !</h3>
     <form method="POST" action="{{ route('login') }}">
         @csrf
             <!--<label for="email" class="col-md-4 col-form-label text-md-right textlabel">{{ __('E-Mail Address') }}</label>-->
@@ -33,7 +33,7 @@
                 <span class="checkmark"></span>
             </label>
             @if (Route::has('password.request'))
-                <a class="mdpoublie" href="{{ route('password.request') }}">
+                <a class="mdpoublie" href="/resetmdp" data-pjax>
                     {{ __('Mot de passe oublié?') }}
                 </a>
             @endif
@@ -43,6 +43,6 @@
             {{ __('Connexion') }}
         </button>
     </form>
-    <h3>Ou créez un <a href="inscription" class="versinscription" data-pjax>nouveau compte</a> pour nous rejoindre !</h3>
+    <h3>Ou <a href="inscription" class="versinscription" data-pjax>rejoignez-nous</a> sans attendre !</h3>
 </div>
 @endsection

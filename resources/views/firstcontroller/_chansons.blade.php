@@ -27,11 +27,11 @@
                                 @if(Auth::user()->playlist->contains($p->id))
                                     @if($p->aLaChanson->contains($c->id))
                                         <a class="majplaylist" data-idplaylist="{{$p->id}}" data-id="{{$c->id}}" data-status="contient">
-                                            <p id="p{{$p->id}}" class="playlist_back danslaplaylist" data-idplaylist="{{$p->id}}" data-id="{{$c->id}}">{{$p->nom}}<i id="check{{$p->id}}" class="fas fa-check"></i></p>
+                                            <p id="p{{$p->id}}-{{$c->id}}" class="playlist_back danslaplaylist" data-idplaylist="{{$p->id}}" data-id="{{$c->id}}">{{$p->nom}}<i id="check{{$p->id}}-{{$c->id}}" class="fas fa-check"></i></p>
                                         </a>
                                     @else
                                         <a class="majplaylist" data-idplaylist="{{$p->id}}" data-id="{{$c->id}}" data-status="necontientpas">
-                                            <p id="p{{$p->id}}" class="playlist_back">{{$p->nom}}<i id="check{{$p->id}}" class="fas fa-check invisible"></i></p>
+                                            <p id="p{{$p->id}}-{{$c->id}}" class="playlist_back">{{$p->nom}}<i id="check{{$p->id}}-{{$c->id}}" class="fas fa-check invisible"></i></p>
                                         </a>
                                     @endif
                                 @endif
@@ -39,7 +39,7 @@
                                 <a href="/playlist/nouvelle/{{$c->id}}"><p class="addplaylist">Ajouter à une nouvelle playlist</p></a>
                             @endauth
                             @guest
-                                <p>Connectez-vous pour ajouter cette chanson à une playlist.</p>
+                                <a href="/connexion" data-pjax><p>Connectez-vous pour ajouter cette chanson à une playlist</p></a>
                             @endguest
                         </div>
                         <a  class="a_retour" id="retour{{$c->id}}" data-id='{{$c->id}}'><i class="far fa-arrow-alt-circle-left retour"></i></a>

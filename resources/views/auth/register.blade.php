@@ -1,8 +1,8 @@
 @extends('layouts.general')
 @section('contenu')
     <div id="formconnexion" class="container formconnexion">
-        <div class="titre"><h2>Connexion</h2></div>
-        <h3>Envie de faire partie de nos membres ? Inscrivez-vous dès maintenant !</h3>
+        <div class="titre"><h2>Inscription</h2></div>
+        <h3>Envie de faire partie de nos membres ?<br /> Inscrivez-vous dès maintenant !</h3>
         <form method="POST" action="{{ route('register') }}">
         @csrf
             <input id="name" type="text" class="input_form @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus placeholder="Identifiant...">
@@ -35,6 +35,6 @@
                 {{ __('Inscription') }}
             </button>
         </form>
-        <h3>Ou <a href="connexion" class="versinscription" data-pjax>connectez-vous</a> dès maintenant !</h3>
+        <h3>Ou <a href="connexion" class="versinscription" data-pjax>connectez-vous</a> à votre compte !</h3>
     </div>
 @endsection

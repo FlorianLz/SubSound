@@ -7,6 +7,7 @@ use App\Playlist;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class FirstController extends Controller
 {
@@ -50,6 +51,10 @@ class FirstController extends Controller
         return view("auth.register");
     }
 
+    public function resetmdp(){
+        return view("auth.passwords.reset");
+    }
+
     public function favoris(){
         $chansons=Chanson::all(); //SELECT * FROM chansons
         $playlists=Playlist::all(); //SELECT * FROM playlist
@@ -62,6 +67,19 @@ class FirstController extends Controller
         $playlists=Playlist::all(); //SELECT * FROM playlist
         $user=User::findOrFail(Auth::id());
         return view("firstcontroller.musiques", ["chansons"=>$chansons,"active" => "favoris","utilisateur"=>$user,"playlists"=>$playlists]);
+    }
+
+    public function musiquesuser($id){
+        $chansons=Chanson::all(); //SELECT * FROM chansons
+        $playlists=Playlist::all(); //SELECT * FROM playlist
+        if(Auth::id()){
+            $user=User::findOrFail(Auth::id());
+            $userr=User::findOrFail($id);
+            return view("firstcontroller.musiquesuser", ["chansons"=>$chansons,"active" => "favoris","utilisateur"=>$user,"userr"=>$userr,"playlists"=>$playlists]);
+        }else{
+            $userr=User::findOrFail($id);
+            return view("firstcontroller.musiquesuser", ["chansons"=>$chansons,"active" => "favoris","userr"=>$userr,"playlists"=>$playlists]);
+        }
     }
 
     public function playlist(){
@@ -92,8 +110,14 @@ class FirstController extends Controller
         $u = User::findOrFail($id);
         $playlists=Playlist::all();
         $chansons=Chanson::all();
-        $user=User::findOrFail(Auth::id());
-        return view("firstcontroller.utilisateur", ['utilisateurr' => $u,"playlists"=>$playlists,"chansons"=>$chansons,"utilisateur"=>$user]);
+
+        if(Auth::id()){
+            $user=User::findOrFail(Auth::id());
+            return view("firstcontroller.utilisateur", ['utilisateurr' => $u,"playlists"=>$playlists,"chansons"=>$chansons,"utilisateur"=>$user]);
+        }else{
+            return view("firstcontroller.utilisateur", ['utilisateurr' => $u,"playlists"=>$playlists,"chansons"=>$chansons,"utilisateur"=>'anonyme']);
+
+        }
     }
 
     public function nouvellechanson(){
@@ -135,7 +159,7 @@ class FirstController extends Controller
 
     public function suivre($id){
         Auth::user()->jeLesSuit()->toggle($id);
-        return back();
+        return Redirect::to('utilisateur/'.$id);
     }
 
     public function like($id){

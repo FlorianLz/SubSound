@@ -69,7 +69,6 @@ body{
 .photo_user{
     width:7rem;
     height:7rem;
-    background-color:var(--principale);
     border-radius:6rem;
     background-size:cover;
 }
@@ -150,7 +149,7 @@ h3.msg_auth{
     color:var(--principale);
     text-align: center;
     padding-top:3rem;
-    font-size: 2.5rem;
+    font-size: 2rem;
 }
 .boutons_auth{
     display: flex;
@@ -186,7 +185,7 @@ a.bouton_auth:hover{
 .chansons{
     display:flex;
     flex-wrap: wrap;
-    height: 90vh;
+    height: 80vh;
     overflow: auto;
     align-items: center;
     justify-content: space-evenly;
@@ -246,6 +245,7 @@ h4.titrechanson{
     top:50%;
     left:50%;
     transform: translate(-50%,-50%);
+    cursor:pointer;
 }
 .boutonpause{
     width:40%;
@@ -257,6 +257,7 @@ h4.titrechanson{
     left:50%;
     transform: translate(-50%,-50%);
     background-image: url("../img/pause-button.png");
+    cursor:pointer;
 }
 .boutonplay_list{
     width: 50px;
@@ -268,6 +269,7 @@ h4.titrechanson{
 .autoplay,.volume{
     padding-left:1.5rem;
     font-size:2rem;
+    cursor:pointer;
 }
 .autoplayactif{
     color:var(--secondaire);
@@ -327,7 +329,7 @@ a.a_like > i{
     padding:1rem;
 }
 .input_form_password{
-    width:30%;
+    width:45%;
     height:50%;
     border:0.4rem solid var(--principale);
     font-size:2rem;
@@ -336,11 +338,11 @@ a.a_like > i{
     padding:1rem;
 }
 .remember{
-    width:50%;
+    width:60%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-left:1rem;
+    padding-left:0.5rem;
 }
 button.bouton_auth{
     width:50%;
@@ -360,14 +362,17 @@ button.bouton_auth:hover{
 }
 .mdpoublie{
     color:var(--secondaire);
+    font-size:1.5rem;
 }
 .erreurlogin{
     color:red;
     padding-bottom:2rem;
+    font-size:2.2rem;
 }
 .versinscription{
     text-decoration: none;
     color:var(--principale);
+    font-size:1.8rem;
 }
 
 
@@ -377,9 +382,8 @@ button.bouton_auth:hover{
 .my_checkbox {
     position: relative;
     padding-left: 3.5rem;
-    margin-bottom: 1.2rem;
     cursor: pointer;
-    font-size: 2.2rem;
+    font-size: 1.8rem;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -627,11 +631,21 @@ button.bouton_auth:hover{
 }
 .info ul li{
     list-style-type: none;
+    font-size: 2.4rem;
 }
 .info h3{
     font-size: 4.8rem;
     color:var(--secondaire);
-    margin-bottom:4rem;
+}
+.bas{
+    margin-top:10rem;
+}
+.info > ul > a{
+    text-decoration: none;
+    color:var(--principale);
+}
+.info > ul > a:hover{
+    color:var(--secondaire);
 }
 
 .imp{
@@ -783,6 +797,7 @@ button.bouton_auth:hover{
     animation:gauche-droite 10s;
     left:50%;
     transform: translateX(-50%);
+    width:max-content;
 }
 
 .audio-player .album-image {
@@ -816,6 +831,9 @@ button.bouton_auth:hover{
 .audio-player .player-controls progress::-webkit-progress-value {
     background-color: white;
 }
+.audio-player .player-controls progress::-moz-progress-bar {
+    background-color: white;
+}
 .audio-player .player-controls p {
     font-size: 1.6rem;
 }
@@ -825,6 +843,7 @@ button.bouton_auth:hover{
     width: 5rem;
     height: 5rem;
     margin-left:1.5rem;
+    cursor:pointer;
 }
 .audio-player #play-btn.pause {
     background-image: url("../img/pause-button.png");
@@ -877,10 +896,14 @@ a.a_plus{
     top:50%;
     z-index:20;
     transform: translateY(-50%);
+    cursor:pointer;
 }
 a.a_plus > i.plus{
     color:grey;
     font-size:4rem;
+}
+a{
+    cursor:pointer;
 }
 a.a_retour{
     position: absolute;
@@ -916,6 +939,9 @@ a.a_retour > i.retour{
 }
 .listeplaylists > a {
     font-size: 2.5rem;
+}
+.listeplaylists > p{
+    font-size:1.5rem;
 }
 .imgchansonback{
     filter:brightness(0.2);
@@ -960,6 +986,12 @@ a.a_retour > i.retour{
     padding:1rem;
 }
 
+/* Page musique perso */
+.aucune{
+    font-size:2rem;
+    text-align: center;
+    padding-top:4rem;
+}
 /* Responsive */
 @media screen and (max-width:800px){
     body{
@@ -1042,7 +1074,10 @@ a.a_retour > i.retour{
         width:100%;
     }
     .chansons{
-        height:94%;
+        height:88%;
+    }
+    .rech{
+        height:72%!important;
     }
     .flip-card{
         margin:0 0 2rem 0;
@@ -1241,9 +1276,54 @@ a.a_retour > i.retour{
     }
     .info h3{
         margin: 5rem 0 0 0;
+        font-size:2.6rem;
+    }
+    .bas{
+        margin-top:2rem;
     }
     .deconnexion_button{
         display:block;
+    }
+    .mdp{
+        flex-direction: column;
+        display: flex;
+        width:70%;
+        margin:0 auto;
+    }
+    .input_form_password{
+        width:100%;
+        margin-bottom:1rem;
+    }
+    button.bouton_auth{
+        width:70%;
+        margin-top:1rem;
+    }
+    .input_form{
+        margin-bottom:1rem;
+        width:70%;
+    }
+    .formconnexion > h3{
+        padding-top:0;
+    }
+    .formconnexion > form{
+        margin-bottom:1rem;
+    }
+    .my_checkbox{
+        font-size:1.3rem;
+        width:max-content;
+        align-self: flex-start;
+
+    }
+    .mdpoublie{
+        align-self: flex-end;
+        font-size:1.3rem;
+    }
+    .remember{
+        width:70%;
+        flex-direction: column-reverse;
+    }
+    .erreurlogin{
+        font-size:1.2rem;
     }
 
     /* Add playlist */
@@ -1292,7 +1372,7 @@ a.a_retour > i.retour{
 /* Barre lecture bienvenue */
 @keyframes gauche-droite {
     0% {
-        left:-20%;
+        left:-30%;
     }
     100% {
         left:50%;

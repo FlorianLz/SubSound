@@ -1,5 +1,5 @@
 if(document.body.clientWidth < 800){
-    document.getElementById('car').classList.add('carousel');
+    $('#car').addClass('carousel');
 }
 require = function(r, e, n) {
     function t(n, o) {
